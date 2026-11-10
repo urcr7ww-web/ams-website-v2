@@ -1,0 +1,1587 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>
+@charset "utf-8";
+
+:root { --site-primary: #2864f0; --site-on-primary: #ffffff; --site-secondary: #101827; --site-on-secondary: #ffffff; --site-background: light-dark(#f6f8fc,#101827); --site-on-background: light-dark(#101827,#f6f8fc); --site-font-body: Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; --site-font-heading: Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; --site-heading-scale: 1; --site-spacing-scale: 1; --site-radius-scale: 1; --site-decoration-opacity: 1; --ink: #101827; --muted: #667085; --blue: var(--site-primary); --cyan: #5eead4; --paper: #f6f8fc; --line: #e7ebf2; --white: #fff; }
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body { margin: 0px; font-family: var(--site-font-body); color: var(--site-on-background); background-color: var(--site-background); }
+
+a { text-decoration: none; color: inherit; }
+
+.wrap { width: min(1160px, 92%); margin: auto; }
+
+header { background: rgb(255, 255, 255); border-bottom: 1px solid var(--line); position: sticky; top: 0px; z-index: 10; }
+
+.nav { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+
+.brand { font-size: 17px; font-weight: 850; letter-spacing: -0.55px; line-height: 1.15; }
+
+.brand span { color: var(--blue); }
+
+.menu-toggle { display:none; border:1px solid var(--line); background:#fff; color:var(--ink); border-radius:10px; padding:9px 12px; font-weight:750; }
+.navlinks { display: flex; gap: 26px; color: rgb(71, 84, 103); font-size: 14px; font-weight: 650; }
+
+.navlinks a:hover { color: var(--blue); }
+
+.navcta, .btn { background: var(--blue); color: rgb(255, 255, 255); padding: 12px 18px; border-radius: 12px; font-weight: 750; font-size: 14px; display: inline-block; border: 0px; cursor: pointer; }
+
+.hero { background: radial-gradient(circle at 80% 20%, rgb(35, 78, 145) 0px, rgb(23, 42, 75) 30%, rgb(16, 24, 39) 68%); color: white; padding: 76px 0px 66px; overflow: hidden; }
+
+.hero-grid { display: grid; grid-template-columns: 1.12fr 0.88fr; align-items: center; gap: 44px; }
+
+.eyebrow { color: var(--cyan); font-size: 12px; font-weight: 850; letter-spacing: 1.8px; text-transform: uppercase; }
+
+.hero h1 { font-size: clamp(38px, 5.4vw, 64px); line-height: 1.04; letter-spacing: -2.6px; margin: 16px 0px; }
+
+.hero p { color: rgb(212, 219, 234); line-height: 1.7; max-width: 570px; font-size: 16px; }
+
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+
+.btn.light { background: rgb(255, 255, 255); color: var(--ink); }
+
+.hero-note { margin-top: 18px; font-size: 12px !important; color: rgb(174, 187, 208) !important; }
+
+.device-stage { min-height: 300px; display: grid; place-items: center; position: relative; }
+
+.glow { position: absolute; width: 280px; height: 280px; background: rgb(40, 100, 240); filter: blur(90px); opacity: 0.45; border-radius: 50%; }
+
+.phone { position: relative; width: 190px; height: 330px; border: 8px solid rgb(41, 54, 75); border-radius: 34px; background: linear-gradient(145deg, rgb(217, 243, 255), rgb(138, 169, 255) 50%, rgb(53, 75, 155)); box-shadow: rgba(0, 0, 0, 0.533) 0px 35px 80px; transform: rotate(9deg); }
+
+.phone::before { content: ""; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 62px; height: 15px; background: rgb(24, 35, 55); border-radius: 12px; }
+
+.phone::after { content: ""; position: absolute; inset: 70px 18px 22px; border-radius: 22px; background: linear-gradient(140deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.03)); border: 1px solid rgba(255, 255, 255, 0.44); }
+
+.float-card { position: absolute; background: rgb(255, 255, 255); color: var(--ink); padding: 14px 17px; border-radius: 15px; box-shadow: rgba(0, 0, 0, 0.267) 0px 14px 35px; font-size: 13px; font-weight: 750; }
+
+.float-card small { display: block; color: var(--muted); font-weight: 550; margin-top: 4px; }
+
+.fc1 { left: 0px; top: 52px; }
+
+.fc2 { right: 0px; bottom: 42px; }
+
+.trust { background: rgb(255, 255, 255); border-bottom: 1px solid var(--line); }
+
+.trustrow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 20px 0px; }
+
+.trustitem { font-size: 13px; color: rgb(71, 84, 103); font-weight: 650; display: flex; align-items: center; gap: 10px; }
+
+.check { width: 28px; height: 28px; border-radius: 9px; background: rgb(233, 249, 245); color: rgb(8, 127, 103); display: grid; place-items: center; font-weight: 900; }
+
+section { padding: 70px 0px; }
+
+.section-head { text-align: center; max-width: 680px; margin: 0px auto 32px; }
+
+.kicker { color: var(--blue); font-size: 12px; font-weight: 850; letter-spacing: 1.5px; text-transform: uppercase; }
+
+.section-head h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -1.4px; margin: 10px 0px; }
+
+.section-head p { color: var(--muted); line-height: 1.65; margin: 0px; }
+
+.repairs { background: rgb(255, 255, 255); }
+
+.repair-tools { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 25px 0px; }
+
+.filter { border: 1px solid var(--line); background: rgb(255, 255, 255); border-radius: 999px; padding: 10px 16px; font-weight: 700; color: rgb(71, 84, 103); cursor: pointer; }
+
+.filter.active { background: var(--ink); border-color: var(--ink); color: white; }
+
+.repair-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+.repair-card { border: 1px solid var(--line); border-radius: 17px; padding: 20px; background: rgb(255, 255, 255); transition: 0.2s; }
+
+.repair-card:hover { transform: translateY(-3px); box-shadow: rgba(23, 42, 75, 0.07) 0px 14px 32px; }
+
+.repair-icon { width: 43px; height: 43px; background: rgb(237, 243, 255); color: var(--blue); border-radius: 13px; display: grid; place-items: center; font-size: 21px; }
+
+.repair-card h3 { font-size: 16px; margin: 15px 0px 6px; }
+
+.repair-card p { font-size: 12px; color: var(--muted); line-height: 1.5; min-height: 36px; margin: 0px; }
+
+.price { font-size: 23px; font-weight: 850; letter-spacing: -0.8px; margin-top: 16px; }
+
+.price small { font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: 0px; }
+
+.repair-foot { font-size: 12px; color: var(--muted); text-align: center; margin-top: 22px; }
+
+.estimate { background: rgb(240, 244, 251); }
+
+.estimate-box { max-width: 760px; margin: auto; background: rgb(255, 255, 255); border: 1px solid var(--line); border-radius: 22px; padding: 28px; box-shadow: rgba(23, 42, 75, 0.04) 0px 16px 40px; }
+
+.formgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.field label { display: block; font-size: 12px; font-weight: 800; margin-bottom: 8px; color: rgb(71, 84, 103); }
+
+.field select { width: 100%; padding: 13px; border: 1px solid rgb(217, 224, 235); border-radius: 11px; background: rgb(255, 255, 255); font: inherit; color: var(--ink); }
+
+.estimate-result { background: rgb(16, 24, 39); color: rgb(255, 255, 255); padding: 20px; border-radius: 15px; margin-top: 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+
+.estimate-result small { color: rgb(184, 196, 215); display: block; }
+
+.estimate-result strong { font-size: 27px; }
+
+.estimate-result p { font-size: 11px; color: rgb(184, 196, 215); margin: 5px 0px 0px; }
+
+.products { background: var(--paper); }
+
+.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+.product { background: rgb(255, 255, 255); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+
+.product-art { height: 140px; border-radius: 13px; background: linear-gradient(135deg, rgb(233, 241, 255), rgb(245, 248, 255)); display: grid; place-items: center; font-size: 52px; }
+
+.product h3 { margin: 17px 0px 5px; }
+
+.product p { color: var(--muted); font-size: 13px; margin: 0px; }
+
+.product .tag { display: inline-block; margin-top: 14px; padding: 6px 9px; background: rgb(238, 244, 255); color: rgb(36, 85, 199); border-radius: 8px; font-size: 11px; font-weight: 800; }
+
+.how { background: rgb(255, 255, 255); }
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+.step { padding: 23px; border: 1px solid var(--line); border-radius: 17px; }
+
+.num { font-size: 12px; font-weight: 900; color: var(--blue); }
+
+.step h3 { margin: 12px 0px 7px; }
+
+.step p { color: var(--muted); font-size: 13px; line-height: 1.6; margin: 0px; }
+
+.contact { background: rgb(16, 24, 39); color: rgb(255, 255, 255); }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; align-items: center; }
+
+.contact h2 { font-size: 38px; letter-spacing: -1.4px; margin: 10px 0px; }
+
+.contact p { color: rgb(189, 200, 217); line-height: 1.7; }
+
+.contact-card { background: rgb(28, 42, 64); border: 1px solid rgb(52, 67, 91); border-radius: 18px; padding: 24px; }
+
+.contact-card label { display: block; font-size: 12px; color: rgb(198, 209, 225); margin: 12px 0px 6px; }
+
+.contact-card input, .contact-card textarea { width: 100%; padding: 12px; border: 1px solid rgb(64, 81, 107); background: rgb(16, 24, 39); color: rgb(255, 255, 255); border-radius: 10px; font: inherit; }
+
+.contact-card textarea { min-height: 80px; resize: vertical; }
+
+.contact-card button { margin-top: 14px; width: 100%; }
+
+footer { padding: 24px 0px; background: rgb(11, 18, 32); color: rgb(158, 172, 193); font-size: 12px; }
+
+.footerrow { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+
+@media (max-width: 850px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .device-stage { min-height: 270px; }
+  .repair-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .nav { height: 62px; }
+  .menu-toggle { display:block; }
+  .navlinks { display:none; position:absolute; top:62px; left:4%; right:4%; background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:0 14px 35px rgba(16,24,39,.14); flex-direction:column; gap:16px; }
+  .navlinks.open { display:flex; }
+  .navcta { padding: 10px 12px; }
+  .hero { padding: 56px 0px 42px; }
+  .hero h1 { letter-spacing: -1.6px; }
+  .trustrow { grid-template-columns: 1fr; gap: 10px; }
+  .repair-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+  .repair-card { padding: 14px; }
+  .repair-card p { min-height: 52px; }
+  .price { font-size: 20px; }
+  .formgrid, .contact-grid, .steps, .product-grid { grid-template-columns: 1fr; }
+  .estimate-box { padding: 18px; }
+  .estimate-result { align-items: flex-start; flex-direction: column; }
+  section { padding: 54px 0px; }
+  .fc1 { left: -5px; }
+  .fc2 { right: -5px; }
+}
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+<meta name="description" content="All Mobile Service &amp; Technology in Secunderabad, Hyderabad. Contact us for mobile repairs and smartphone enquiries.">
+<title>All Mobile Service &amp; Technology | Midnight Edition Preview</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* Stage 1 visual restoration: introduction + animated 3D phone */
+#ams-intro { animation: ams-intro-failsafe 1s ease 7s forwards;
+  
+  position:fixed; inset:0; z-index:99999; display:grid; place-items:center;
+  overflow:hidden; padding:24px; color:#f8fbff;
+  background:radial-gradient(ellipse at 50% 38%,#163f79 0%,#0b1931 48%,#050b18 100%);
+  opacity:1; visibility:visible; transition:opacity .75s ease,visibility .75s ease;
+}
+#ams-intro.ams-leaving { opacity:0; visibility:hidden; pointer-events:none; }
+#ams-intro .intro-content { width:min(720px,100%); text-align:center; position:relative; z-index:2; }
+#ams-intro .intro-kicker { color:#71e4ff; font-size:12px; font-weight:800; letter-spacing:.22em; text-transform:uppercase; }
+#ams-intro h1 { color:#fff; font-size:clamp(30px,6vw,54px); line-height:1.05; letter-spacing:-1.5px; margin:18px 0 10px; }
+#ams-intro p { color:#c4d4ec; margin:0 auto 22px; max-width:520px; line-height:1.6; }
+#ams-intro .intro-scene { height:260px; display:grid; place-items:center; perspective:1000px; margin:0 auto 8px; }
+#ams-intro .intro-phone { position:relative; width:130px; height:224px; border:7px solid #a8c4e8; border-radius:28px;
+  background:linear-gradient(145deg,#1b4e8e,#0b1730 62%,#23b9d2); box-shadow:0 0 35px #27bce477,0 28px 70px #0009,inset 0 0 0 2px #ffffff44;
+  transform-style:preserve-3d; animation:ams-phone-turn 4.8s cubic-bezier(.2,.7,.2,1) infinite; }
+#ams-intro .intro-phone:before { content:""; position:absolute; top:7px; left:50%; transform:translateX(-50%); width:42px; height:9px; border-radius:8px; background:#061326; z-index:2; }
+#ams-intro .intro-phone:after { content:""; position:absolute; inset:24px 8px 9px; border-radius:16px;
+  background:linear-gradient(145deg,#7beaffaa,#2368d9aa 48%,#081b3c); border:1px solid #ffffff66;
+  box-shadow:inset 0 0 25px #ffffff33; }
+#ams-intro .intro-orbit { position:absolute; width:220px; height:220px; border:1px solid #5bdcff55; border-radius:50%; transform:rotateX(68deg); animation:ams-orbit 7s linear infinite; }
+#ams-intro .intro-orbit:after { content:""; position:absolute; width:10px; height:10px; border-radius:50%; background:#6deaff; top:22px; left:30px; box-shadow:0 0 20px #6deaff; }
+#ams-intro .intro-button { border:0; border-radius:999px; padding:13px 25px; color:#06152c; font-weight:850; background:linear-gradient(90deg,#78efff,#a9c8ff); box-shadow:0 8px 30px #36cfff44; cursor:pointer; }
+#ams-intro .intro-skip { display:block; margin:13px auto 0; border:0; background:transparent; color:#b9cce7; cursor:pointer; font-size:13px; padding:8px; }
+@keyframes ams-intro-failsafe { to { opacity:0; visibility:hidden; pointer-events:none; } }
+@keyframes ams-phone-turn { 0%,100% { transform:rotateY(-18deg) rotateX(8deg) translateY(5px); } 50% { transform:rotateY(18deg) rotateX(-5deg) translateY(-10px); } }
+@keyframes ams-orbit { to { transform:rotateX(68deg) rotateZ(360deg); } }
+@media(max-width:520px) { #ams-intro .intro-scene { height:230px; } #ams-intro .intro-phone { transform:scale(.9); } }
+@media(prefers-reduced-motion:reduce) { #ams-intro .intro-phone,#ams-intro .intro-orbit { animation:none; } }
+</style>
+
+
+<style>
+/* AMS immersive scroll experience — CSS 3D, scroll-controlled scenes, responsive fallback */
+.ams-scroll-world { height:300vh; position:relative; background:#050b16; color:#f6fbff; isolation:isolate; }
+.ams-world-sticky { height:100svh; min-height:620px; max-height:1000px; position:sticky; top:0; overflow:hidden;
+  background:radial-gradient(ellipse at 72% 48%,#173d6d 0%,#0b1b32 38%,#050b16 78%); }
+.ams-world-grid { position:absolute; inset:-20%; opacity:.18; pointer-events:none; transform:perspective(500px) rotateX(62deg) translateY(24%);
+  transform-origin:center bottom; background-image:linear-gradient(#77bfff35 1px,transparent 1px),linear-gradient(90deg,#77bfff35 1px,transparent 1px); background-size:54px 54px;
+  mask-image:linear-gradient(to bottom,transparent,#000 30%,#000); }
+.ams-world-topline,.ams-world-bottom { position:absolute; left:5%; right:5%; display:flex; align-items:center; justify-content:space-between; z-index:8; color:#88a9ce; font-size:9px; font-weight:850; letter-spacing:.2em; }
+.ams-world-topline { top:27px; }.ams-world-bottom { bottom:25px; gap:16px; }
+.ams-world-progress { height:2px; background:#ffffff22; flex:1; max-width:220px; }.ams-world-progress i { display:block; width:0%; height:100%; background:#65e3ff; box-shadow:0 0 12px #65e3ff; }
+.ams-world-copy { position:absolute; z-index:7; left:8%; top:50%; transform:translateY(-50%); width:min(390px,38%); }
+.ams-world-step { position:absolute; inset:0 auto auto 0; width:100%; opacity:0; transform:translateY(24px); pointer-events:none; transition:opacity .55s ease,transform .65s cubic-bezier(.2,.7,.2,1); }
+.ams-world-step.active { position:relative; opacity:1; transform:translateY(0); pointer-events:auto; }
+.ams-world-kicker { color:#65e1ff; font-size:10px; font-weight:900; letter-spacing:.2em; }
+.ams-world-step h2 { color:#fff; font-size:clamp(38px,5vw,66px); line-height:.98; letter-spacing:-.055em; margin:18px 0; }
+.ams-world-step h2 em { color:#69ddff; font-style:normal; text-shadow:0 0 30px #35baff55; }
+.ams-world-step p { color:#b6c9e2; line-height:1.75; max-width:340px; font-size:14px; }
+.ams-world-step a { display:inline-flex; gap:14px; margin-top:17px; padding-bottom:9px; border-bottom:1px solid #6ddfff77; color:#fff; font-size:12px; font-weight:850; }
+.ams-world-step a b { color:#70e5ff; font-size:17px; }
+.ams-world-stage { position:absolute; right:4%; top:50%; width:56%; height:76%; transform:translateY(-50%); perspective:1300px; transform-style:preserve-3d; }
+.ams-world-halo { position:absolute; width:48%; aspect-ratio:1; left:28%; top:23%; border-radius:50%; background:#178bff; filter:blur(100px); opacity:.3; transition:background .8s ease,transform .8s ease; }
+.ams-world-orbit { position:absolute; width:62%; aspect-ratio:1; left:21%; top:16%; border:1px solid #7bdfff55; border-radius:50%; transform:rotateX(68deg) rotateZ(-22deg); transition:transform 1s ease,border-color 1s ease; }
+.orbit-b { width:78%; left:13%; top:8%; border-color:#8caeff33; transform:rotateX(73deg) rotateZ(35deg); }
+.ams-world-platform { position:absolute; left:13%; right:3%; bottom:10%; height:17%; border-radius:50%; background:radial-gradient(ellipse,#1a5789aa 0%,#0a1a2c 45%,transparent 72%); transform:rotateX(65deg); border-top:1px solid #75dfff55; }
+.ams-world-phone { position:absolute; width:clamp(150px,19vw,245px); height:clamp(290px,38vw,455px); left:44%; top:48%; transform:translate(-50%,-50%) rotateY(-28deg) rotateX(8deg) rotateZ(-8deg); transform-style:preserve-3d; transition:transform .8s cubic-bezier(.2,.7,.2,1); filter:drop-shadow(35px 45px 32px #0009); }
+.ams-phone-front,.ams-phone-back { position:absolute; inset:0; border:7px solid #a6c7e5; border-radius:36px; padding:7px; background:linear-gradient(135deg,#effaff,#476786 48%,#c2e2f8); box-shadow:inset 0 0 0 1px #fff8,0 0 30px #42caff44; backface-visibility:hidden; }
+.ams-phone-front { transform:translateZ(9px); }.ams-phone-back { transform:rotateY(180deg) translateZ(9px); background:linear-gradient(145deg,#d6edff,#213e60 45%,#b7d5ee); }
+.ams-phone-edge { position:absolute; top:15px; bottom:15px; right:-11px; width:18px; border-radius:8px; transform:rotateY(90deg) translateZ(8px); background:linear-gradient(90deg,#547392,#e7f7ff,#58799b); }
+.ams-phone-ui { position:relative; height:100%; border-radius:25px; overflow:hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+  background:radial-gradient(circle at 50% 40%,#287eac,#10365f 46%,#06152b 82%); color:#e9fbff; }
+.ams-phone-notch { position:absolute; top:13px; left:50%; transform:translateX(-50%); z-index:2; width:65px; height:14px; border-radius:20px; background:#071426; }
+.ams-phone-ui span { font-size:8px; letter-spacing:.2em; color:#9ceaff; }.ams-phone-ui strong { margin-top:15px; font-size:clamp(25px,3vw,39px); line-height:.95; letter-spacing:.04em; z-index:1; }
+.ams-phone-ui-orb { position:absolute; width:70%; aspect-ratio:1; border-radius:50%; border:1px solid #b5f6ff99; box-shadow:0 0 45px #39d5ff88,inset 0 0 35px #64dfff66; }
+.ams-phone-ui small { position:absolute; bottom:20px; font-size:6px; letter-spacing:.14em; color:#a9eaff; }
+.ams-camera-island { position:absolute; top:20px; left:20px; width:70px; height:70px; border-radius:20px; background:linear-gradient(135deg,#172a40,#516b83); border:1px solid #d7efff; display:flex; gap:5px; padding:9px; flex-wrap:wrap; }
+.ams-camera-island i { width:20px; height:20px; border-radius:50%; background:radial-gradient(circle at 35% 30%,#a8eaff,#10213a 50%,#020a14 72%); border:2px solid #b7d8e9; }
+.ams-back-logo { position:absolute; left:50%; top:48%; transform:translate(-50%,-50%); font-size:35px; font-weight:900; color:#eaf8ff; letter-spacing:.12em; }
+.ams-back-caption { position:absolute; bottom:25px; left:0; right:0; text-align:center; font-size:6px; letter-spacing:.2em; color:#e0f3ff; }
+.ams-world-object { position:absolute; z-index:3; padding:12px 15px; border:1px solid #9adfff66; border-radius:12px; background:linear-gradient(135deg,#ffffff24,#0b274cdd); color:#dff9ff; box-shadow:0 14px 35px #0005; backdrop-filter:blur(10px); font-size:8px; letter-spacing:.15em; transition:opacity .5s ease,transform .7s ease; }
+.ams-world-object b { display:block; font-size:19px; margin-top:4px; color:#74e5ff; }
+.ams-object-screen { top:20%; left:4%; transform:translateY(0) rotate(-8deg); }.ams-object-chip { top:24%; right:0; transform:translateY(0) rotate(7deg); }.ams-object-case { bottom:18%; right:5%; transform:translateY(0) rotate(-6deg); }
+.ams-world-caption { position:absolute; bottom:8%; left:0; right:0; text-align:center; font-size:8px; letter-spacing:.28em; color:#8ab6dc; }
+.ams-scroll-world[data-scene="1"] .ams-world-phone { transform:translate(-50%,-50%) rotateY(150deg) rotateX(4deg) rotateZ(5deg) scale(.94); }
+.ams-scroll-world[data-scene="2"] .ams-world-phone { transform:translate(-50%,-50%) rotateY(28deg) rotateX(-9deg) rotateZ(9deg) scale(.9); }
+.ams-scroll-world[data-scene="1"] .ams-world-halo { background:#11a8d4; transform:scale(1.15); }
+.ams-scroll-world[data-scene="2"] .ams-world-halo { background:#526bff; transform:scale(.85); }
+.ams-scroll-world[data-scene="1"] .ams-world-object { opacity:.65; }.ams-scroll-world[data-scene="2"] .ams-world-object { opacity:1; }
+.ams-scroll-world[data-scene="1"] .ams-object-screen { transform:translate(-20px,-10px) rotate(9deg) scale(1.1); }
+.ams-scroll-world[data-scene="2"] .ams-object-case { transform:translate(-25px,-15px) rotate(12deg) scale(1.15); }
+@media(max-width:760px) {
+ .ams-scroll-world { height:260vh; }.ams-world-sticky { min-height:620px; }
+ .ams-world-topline { top:17px; font-size:7px; }.ams-world-copy { left:7%; top:14%; transform:none; width:86%; text-align:center; }
+ .ams-world-step h2 { font-size:clamp(32px,9vw,45px); margin:10px 0; }.ams-world-step p { margin:0 auto; max-width:330px; font-size:12px; line-height:1.5; }
+ .ams-world-step a { margin-top:8px; font-size:10px; }.ams-world-stage { top:63%; right:0; width:100%; height:58%; }
+ .ams-world-phone { width:142px; height:275px; left:50%; top:48%; }.ams-phone-front,.ams-phone-back { border-radius:29px; }.ams-phone-ui { border-radius:21px; }
+ .ams-world-object { font-size:7px; padding:8px 10px; }.ams-object-screen { top:18%; left:1%; }.ams-object-chip { top:20%; right:1%; }.ams-object-case { bottom:16%; right:1%; }
+ .ams-world-caption { bottom:4%; }.ams-world-bottom { bottom:14px; font-size:7px; }.ams-world-progress { max-width:110px; }
+}
+@media(max-height:650px) and (min-width:761px) { .ams-world-phone { height:270px; width:145px; }.ams-world-copy { top:53%; }.ams-world-stage { height:90%; } }
+@media(prefers-reduced-motion:reduce) { .ams-world-step,.ams-world-phone,.ams-world-object,.ams-world-orbit { transition:none!important; } }
+</style>
+
+
+<style id="ams-midnight-edition-v20">
+:root{color-scheme:dark;--site-primary:#a78bfa;--site-on-primary:#100b1c;--site-secondary:#171329;--site-on-secondary:#f5f0ff;--site-background:#090711;--site-on-background:#f5f0ff;--ink:#f5f0ff;--muted:#aaa3bc;--blue:#a78bfa;--cyan:#e879f9;--paper:#090711;--line:rgba(196,181,253,.16);--white:#f8f5ff}
+html{background:#090711;scroll-behavior:smooth}
+body{background:radial-gradient(ellipse at 50% -15%,rgba(124,58,237,.20),transparent 42%),#090711!important;color:#f5f0ff!important}
+header{background:rgba(12,9,23,.82)!important;border-bottom:1px solid rgba(196,181,253,.16)!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.brand{color:#fff!important}.brand span,.navlinks a:hover{color:#c4b5fd!important}.navlinks{color:#c4bbd7!important}.menu-toggle{background:#171329!important;color:#f5f0ff!important;border-color:#554477!important}
+.navcta,.btn,.intro-button{background:linear-gradient(135deg,#a78bfa,#e879f9)!important;color:#100b1c!important;box-shadow:0 8px 30px rgba(167,139,250,.24)!important;border:1px solid rgba(255,255,255,.2)!important}
+.btn.light{background:rgba(255,255,255,.08)!important;color:#fff!important;border:1px solid rgba(221,214,254,.3)!important}
+.hero{background:radial-gradient(circle at 78% 24%,rgba(168,85,247,.36),transparent 32%),radial-gradient(circle at 15% 80%,rgba(124,58,237,.18),transparent 38%),linear-gradient(135deg,#0b0816,#171329 60%,#090711)!important;color:#fff!important}
+.hero p,.hero-note{color:#c8bfdc!important}.eyebrow,.kicker,.num{color:#d8b4fe!important}
+section:not(.hero):not(.ams-scroll-world){background-color:transparent!important;color:#f5f0ff!important}
+.section-head h2,.section-head p,.section-head,.repairs h2,.estimate h2,.products h2,.how h2,.contact h2{color:#f5f0ff!important}
+.section-head p,.repair-card p,.product p,.step p,.contact p{color:#b8afca!important}
+.repair-card,.product,.estimate-box,.contact-card,.step,.float-card,.fc1,.fc2{background:linear-gradient(145deg,rgba(35,27,58,.88),rgba(18,14,32,.94))!important;border:1px solid rgba(196,181,253,.18)!important;color:#f5f0ff!important;box-shadow:0 18px 55px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.045)!important;border-radius:20px!important}
+.repair-icon,.product-art{display:grid;place-items:center;width:66px;height:66px;border-radius:20px;background:linear-gradient(145deg,#39265d,#171329)!important;color:#eadcff!important;border:1px solid rgba(216,180,254,.35)!important;box-shadow:8px 10px 22px rgba(0,0,0,.35),inset 2px 2px 7px rgba(255,255,255,.12),inset -3px -4px 9px rgba(0,0,0,.35)!important;text-shadow:0 4px 12px rgba(232,121,249,.5);font-size:30px!important}
+.price{color:#d8b4fe!important}.price small,.tag{color:#c4b5fd!important}
+.filter{background:#171329!important;color:#dcd4ef!important;border:1px solid rgba(196,181,253,.2)!important;border-radius:999px!important}.filter.active{background:linear-gradient(135deg,#a78bfa,#e879f9)!important;color:#100b1c!important}
+.field label,.contact-card label{color:#ddd5ed!important}input,select,textarea{background:#100d1d!important;color:#f5f0ff!important;border:1px solid rgba(196,181,253,.24)!important;border-radius:12px!important}input::placeholder,textarea::placeholder{color:#817891!important}
+#brands{background:transparent!important}#brands span{background:#171329!important;color:#e9ddff!important;border-color:rgba(196,181,253,.2)!important;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+#platform{background:radial-gradient(ellipse at center,rgba(124,58,237,.17),transparent 65%),#0d0a18!important}#platform p{color:#b8afca!important}
+#owner-preview{background:linear-gradient(135deg,#100d1d,#171329)!important;color:#f5f0ff!important;border-top:1px solid rgba(196,181,253,.16);border-bottom:1px solid rgba(196,181,253,.16)}
+#owner-preview [style*="background:#14233e"],#owner-preview [style*="background: #14233e"]{background:linear-gradient(145deg,#251b3d,#151126)!important;border-color:rgba(196,181,253,.2)!important;color:#f5f0ff!important;box-shadow:0 12px 32px rgba(0,0,0,.22)}
+#owner-preview [style*="color:#b8c5dc"],#owner-preview [style*="color: #b8c5dc"],#owner-preview [style*="color:#8fa7c7"]{color:#b8afca!important}
+#ams-intro{background:radial-gradient(circle at 50% 38%,rgba(168,85,247,.28),transparent 35%),linear-gradient(145deg,#090711,#171329 58%,#090711)!important;color:#fff!important}
+#ams-intro .intro-kicker{color:#d8b4fe!important}#ams-intro h1{color:#fff!important;text-shadow:0 0 35px rgba(167,139,250,.25)}#ams-intro p{color:#c8bfdc!important}#ams-intro .intro-skip{color:#c4b5fd!important}
+.ams-scroll-world{background:#090711!important;color:#f5f0ff!important}.ams-world-grid{opacity:.3}.ams-world-kicker{color:#d8b4fe!important}.ams-world-step h2{color:#fff!important}.ams-world-step h2 em{color:#c4b5fd!important}.ams-world-step p{color:#c8bfdc!important}.ams-world-step a{color:#e9d5ff!important}
+footer{background:#080610!important;color:#b8afca!important;border-top:1px solid rgba(196,181,253,.15)}
+/* Raised, dimensional treatment for existing icon tiles without changing their content or handlers. */
+.repair-icon,.product-art{transform:translateZ(0);transition:transform .25s ease,filter .25s ease}.repair-card:hover .repair-icon,.product:hover .product-art{transform:translateY(-5px) rotate(-4deg);filter:drop-shadow(0 10px 16px rgba(167,139,250,.25))}
+a,button,.repair-card,.product,.step{transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #d8b4fe!important;outline-offset:3px}
+@media(max-width:760px){.navlinks{background:#100d1d!important;border:1px solid rgba(196,181,253,.2)!important;border-radius:16px;padding:14px!important;box-shadow:0 18px 40px rgba(0,0,0,.4)}.hero{padding-top:54px!important}.repair-icon,.product-art{width:58px;height:58px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+
+
+<style id="ams-single-phone-refinement">
+/* V21: one hero phone only — remove duplicate phone mockups elsewhere */
+#ams-intro { background:radial-gradient(ellipse at 50% 38%,#35205f 0%,#17102b 48%,#090711 100%) !important; }
+#ams-intro .intro-kicker { color:#d8b4fe !important; }
+#ams-intro .intro-scene { height:300px !important; }
+#ams-intro .intro-phone {
+  width:154px !important; height:264px !important; border:7px solid #b9a4ed !important;
+  border-radius:34px !important;
+  background:linear-gradient(145deg,#f3e8ff 0%,#9b72df 22%,#251544 62%,#090711 100%) !important;
+  box-shadow:0 0 24px #a78bfa99,0 0 75px #8b5cf655,0 35px 90px #000c,inset 0 0 0 2px #ffffff55 !important;
+  animation:ams-phone-turn 6s cubic-bezier(.2,.7,.2,1) infinite !important;
+}
+#ams-intro .intro-phone:before { background:#090711 !important; width:48px !important; height:10px !important; }
+#ams-intro .intro-phone:after {
+  inset:25px 8px 9px !important; border-radius:21px !important;
+  background:radial-gradient(circle at 50% 42%,#f0abfcaa 0%,#a78bfa55 24%,transparent 55%),linear-gradient(155deg,#30204f,#100b20 72%) !important;
+  border:1px solid #e9d5ff99 !important;
+  box-shadow:inset 0 0 35px #c4b5fd55,0 0 22px #c084fc44 !important;
+}
+#ams-intro .intro-orbit { width:250px !important; height:250px !important; border-color:#c4b5fd66 !important; }
+#ams-intro .intro-orbit:after { background:#e9d5ff !important; box-shadow:0 0 22px #c084fc !important; }
+#ams-intro .intro-button { color:#170d2a !important; background:linear-gradient(100deg,#c4b5fd,#f0abfc) !important; box-shadow:0 8px 32px #a78bfa55 !important; }
+/* Keep one phone in the cinematic introduction/3D scene; hide only the duplicate legacy hero phone. */
+.hero .device-stage .phone { display:none !important; }
+.ams-world-phone { display:block !important; visibility:visible !important; opacity:1 !important; }
+/* Retain the scene's ambient lighting and accessory/repair storytelling. */
+@media(max-width:520px) { #ams-intro .intro-scene { height:270px !important; } #ams-intro .intro-phone { transform:scale(.92); } }
+</style>
+
+
+<style id="ams-v22-menu-fix">
+/* V22: reliable mobile navigation; preserve the approved introduction and page design */
+@media (max-width: 760px) {
+  header { position: sticky !important; top: 0 !important; z-index: 10000 !important; }
+  header .nav { position: relative !important; min-height: 64px !important; height: auto !important; gap: 10px !important; }
+  header .menu-toggle { display: inline-flex !important; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 10002; cursor: pointer; }
+  header .navlinks { display: none !important; position: absolute !important; top: calc(100% + 8px) !important; left: 0 !important; right: 0 !important; z-index: 10001 !important; flex-direction: column !important; gap: 0 !important; padding: 8px !important; background: #100d1d !important; border: 1px solid rgba(196,181,253,.28) !important; border-radius: 16px !important; box-shadow: 0 18px 42px rgba(0,0,0,.55) !important; max-height: min(70vh, 460px); overflow-y: auto; }
+  header .navlinks.open { display: flex !important; }
+  header .navlinks a { display: block !important; padding: 13px 14px !important; color: #eee9ff !important; border-radius: 10px; }
+  header .navlinks a:hover, header .navlinks a:focus { background: rgba(167,139,250,.15) !important; }
+  header .navcta { display: none !important; }
+}
+@media (min-width: 761px) { header .menu-toggle { display: none !important; } header .navlinks { display: flex !important; } }
+</style>
+
+<style id="ams-v26-phone-visibility-fix">
+/* V26 reliability patch: keep the single cinematic phone visible */
+#ams-3d-experience .ams-world-stage{position:absolute!important;isolation:isolate;overflow:visible!important}
+#ams-3d-experience #ams-world-phone{
+  display:block!important;visibility:visible!important;opacity:1!important;
+  position:absolute!important;z-index:20!important;
+  width:clamp(142px,19vw,245px)!important;height:clamp(270px,38vw,455px)!important;
+  left:50%!important;top:48%!important;
+  transform:translate(-50%,-50%) rotateY(-28deg) rotateX(8deg) rotateZ(-8deg)!important;
+  transform-style:preserve-3d!important;pointer-events:none!important;
+}
+#ams-3d-experience #ams-world-phone .ams-phone-front,
+#ams-3d-experience #ams-world-phone .ams-phone-back{
+  display:block!important;visibility:visible!important;opacity:1!important;
+  position:absolute!important;inset:0!important;min-height:100%;
+}
+#ams-3d-experience #ams-world-phone .ams-phone-front{z-index:2!important}
+#ams-3d-experience #ams-world-phone .ams-phone-back{z-index:1!important}
+#ams-3d-experience #ams-world-phone .ams-phone-edge{display:block!important;visibility:visible!important;opacity:1!important}
+#ams-3d-experience .ams-world-object{z-index:24}
+#ams-3d-experience .ams-world-orbit,#ams-3d-experience .ams-world-platform{z-index:1}
+@media(max-width:760px){
+ #ams-3d-experience .ams-world-stage{right:0!important;left:0!important;width:100%!important;height:68%!important;top:62%!important;transform:translateY(-50%)!important}
+ #ams-3d-experience #ams-world-phone{width:142px!important;height:270px!important;left:50%!important;top:48%!important}
+ #ams-3d-experience .ams-world-halo{left:26%!important;top:25%!important;width:48%!important}
+}
+</style>
+<style id="ams-v27-owner-phone-inventory-and-3d-recovery">
+/* Owner dashboard phone inventory: same management-card pattern as the existing inventory tool */
+#owner-preview .ams-owner-phone-tile{background:linear-gradient(145deg,#2b2045,#151126)!important;border:1px solid rgba(196,181,253,.28)!important;border-radius:16px;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+#owner-preview .ams-owner-phone-tile:hover{transform:translateY(-3px);border-color:#c4b5fd!important;box-shadow:0 14px 32px #0005}
+#owner-preview .ams-owner-phone-tile h3{color:#fff!important}
+#owner-preview .ams-owner-phone-tile p{color:#c5badb!important}
+.ams-owner-tile-link{display:inline-block;margin-top:13px;color:#e9d5ff;font-size:12px;font-weight:800}
+.ams-owner-inventory-heading{max-width:980px;margin:34px auto 12px}
+.ams-owner-inventory-heading h3{color:#fff;font-size:24px;margin:7px 0}
+.ams-owner-inventory-heading p{color:#b8afca;margin:0;line-height:1.6}
+#ams-phone-inventory{scroll-margin-top:95px}
+
+/* Reliable visible 3D phone rendering on Android/mobile browsers */
+#ams-3d-experience .ams-world-stage{z-index:5!important;isolation:isolate!important;perspective:1100px!important}
+#ams-3d-experience #ams-world-phone{
+  display:block!important;visibility:visible!important;opacity:1!important;
+  position:absolute!important;left:50%!important;top:48%!important;
+  width:clamp(150px,20vw,245px)!important;height:clamp(290px,39vw,455px)!important;
+  z-index:30!important;overflow:visible!important;
+  border:0!important;border-radius:38px!important;
+  background:linear-gradient(135deg,#d9eaff 0%,#536c91 18%,#111a2d 48%,#9eb8d8 100%)!important;
+  box-shadow:0 28px 65px #000b,0 0 35px #a78bfa66,inset 0 0 0 2px #ffffff88!important;
+  transform:translate(-50%,-50%) rotateY(-22deg) rotateX(5deg) rotateZ(-5deg)!important;
+  transform-style:preserve-3d!important;opacity:1!important;filter:drop-shadow(20px 28px 22px #0009)!important;
+}
+#ams-3d-experience #ams-world-phone:before{
+  content:"";position:absolute;inset:7px;border-radius:31px;
+  background:linear-gradient(145deg,#0b1020,#151d36 55%,#090d19);
+  border:1px solid #e7dfff99;box-shadow:inset 0 0 22px #a78bfa33;z-index:0;
+}
+#ams-3d-experience #ams-world-phone .ams-phone-front{
+  display:block!important;visibility:visible!important;opacity:1!important;
+  position:absolute!important;inset:7px!important;z-index:3!important;
+  border:2px solid #d9d2f0!important;border-radius:31px!important;padding:7px!important;
+  background:linear-gradient(145deg,#283451,#090d19 45%,#35234d)!important;
+  transform:translateZ(9px)!important;backface-visibility:hidden!important;
+  box-shadow:inset 0 0 0 1px #fff5,0 0 24px #a78bfa55!important;
+}
+#ams-3d-experience #ams-world-phone .ams-phone-ui{
+  display:flex!important;visibility:visible!important;opacity:1!important;
+  position:relative!important;width:100%!important;height:100%!important;min-height:100%!important;
+  border-radius:23px!important;overflow:hidden!important;
+  background:radial-gradient(circle at 50% 38%,#7c3aed 0%,#2b1c55 34%,#080b18 78%)!important;
+}
+#ams-3d-experience #ams-world-phone .ams-phone-ui-orb{
+  display:block!important;width:68%!important;aspect-ratio:1!important;border:1px solid #e9d5ffbb!important;
+  box-shadow:0 0 45px #c084fc99,inset 0 0 32px #a78bfa77!important;
+}
+#ams-3d-experience #ams-world-phone .ams-phone-back{
+  display:block!important;visibility:visible!important;opacity:1!important;
+  position:absolute!important;inset:7px!important;z-index:1!important;
+  border:2px solid #d9d2f0!important;border-radius:31px!important;
+  background:linear-gradient(145deg,#b9a5dc,#30234c 48%,#090d19)!important;
+  backface-visibility:hidden!important;
+}
+#ams-3d-experience #ams-world-phone .ams-phone-edge{display:block!important;visibility:visible!important;opacity:1!important}
+@media(max-width:760px){
+ #ams-3d-experience .ams-world-stage{left:0!important;right:0!important;width:100%!important;height:65%!important;top:65%!important;transform:translateY(-50%)!important;z-index:5!important}
+ #ams-3d-experience #ams-world-phone{width:150px!important;height:286px!important;left:50%!important;top:48%!important}
+ #ams-3d-experience .ams-world-copy{z-index:8!important}
+}
+</style>
+
+
+<style id="ams-v28-purple-cinematic-intro">
+#ams-intro{
+  display:flex!important;flex-direction:column!important;justify-content:flex-start!important;
+  padding:0!important;inset:0!important;overflow:hidden!important;
+  background:
+    radial-gradient(ellipse at 50% 47%,rgba(124,58,237,.34) 0%,rgba(76,29,149,.20) 30%,transparent 58%),
+    radial-gradient(ellipse at 10% 80%,rgba(192,132,252,.13),transparent 42%),
+    linear-gradient(150deg,#090711 0%,#17102b 52%,#090711 100%)!important;
+  color:#f8f4ff!important;
+}
+#ams-intro:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(196,181,253,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(196,181,253,.12) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,transparent,#000 35%,#000 80%,transparent)}
+#ams-intro .ams-intro-topbar{
+  width:100%;min-height:76px;padding:13px clamp(18px,5vw,42px);display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(216,180,254,.16);background:rgba(10,7,20,.55);backdrop-filter:blur(16px);position:relative;z-index:4;
+}
+#ams-intro .ams-intro-brand{display:flex;align-items:center;gap:11px;text-align:left}
+#ams-intro .ams-intro-logo{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;font-weight:950;font-size:15px;color:#160d26;background:linear-gradient(145deg,#e9d5ff,#a78bfa 55%,#e879f9);box-shadow:0 0 28px rgba(167,139,250,.36)}
+#ams-intro .ams-intro-brand strong{display:block;color:#fff;font-size:12px;letter-spacing:.055em}
+#ams-intro .ams-intro-brand small{display:block;color:#c4b5fd;font-size:10px;letter-spacing:.19em;margin-top:3px}
+#ams-intro .ams-intro-menu-mark{border:1px solid rgba(216,180,254,.28);border-radius:12px;padding:9px 12px;color:#e9d5ff;font-size:17px}
+#ams-intro .intro-content{width:min(760px,100%);height:calc(100% - 76px);min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;position:relative;z-index:2;padding:clamp(24px,5vh,48px) 20px 14px}
+#ams-intro .ams-intro-tagline{font-size:9px;font-weight:900;letter-spacing:.19em;color:#d8b4fe;display:flex;align-items:center;gap:8px}
+#ams-intro .ams-intro-tagline i{width:6px;height:6px;border-radius:50%;background:#e879f9;box-shadow:0 0 13px #e879f9}
+#ams-intro .ams-intro-headline{margin-top:14px;display:flex;flex-direction:column;font-size:clamp(31px,7vw,52px);line-height:.98;letter-spacing:-.055em;font-weight:850}
+#ams-intro .ams-intro-headline strong{color:#d8b4fe;text-shadow:0 0 28px rgba(192,132,252,.26)}
+#ams-intro .ams-intro-subtitle{font-size:12px!important;color:#c4b5fd!important;letter-spacing:.09em;margin:10px auto 0!important}
+#ams-intro .intro-scene{position:relative;display:grid;place-items:center;width:min(520px,100%);height:clamp(300px,49vh,460px);flex:1;min-height:270px;margin:0 auto!important;perspective:1200px}
+#ams-intro .ams-intro-aura{position:absolute;width:64%;height:55%;border-radius:50%;background:radial-gradient(ellipse,rgba(168,85,247,.46),rgba(124,58,237,.17) 42%,transparent 72%);filter:blur(25px);animation:ams-v28-aura 4.5s ease-in-out infinite}
+#ams-intro .ams-intro-orbit{position:absolute;width:min(74vw,350px);height:min(74vw,350px);border:1px solid rgba(216,180,254,.34);border-radius:50%;transform:rotateX(70deg) rotateZ(-20deg);animation:ams-v28-orbit 13s linear infinite}
+#ams-intro .ams-intro-orbit-one:after,#ams-intro .ams-intro-orbit-two:after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:#f0abfc;box-shadow:0 0 19px #e879f9;top:18%;left:18%}
+#ams-intro .ams-intro-orbit-two{width:min(88vw,420px);height:min(88vw,420px);border-color:rgba(167,139,250,.2);animation-duration:18s;animation-direction:reverse}
+#ams-intro .intro-phone{
+  position:relative!important;width:clamp(150px,35vw,205px)!important;height:clamp(285px,60vw,390px)!important;border:6px solid #c4b5fd!important;border-radius:35px!important;
+  background:linear-gradient(145deg,#d8b4fe 0%,#4c3478 15%,#17102b 58%,#090711 100%)!important;
+  box-shadow:0 0 0 2px rgba(255,255,255,.13),0 0 45px rgba(168,85,247,.43),0 35px 75px #000b,inset 0 0 0 2px #ffffff33!important;
+  transform-style:preserve-3d!important;animation:ams-v28-phone-float 5s ease-in-out infinite!important;z-index:2;
+}
+#ams-intro .intro-phone:before{top:9px!important;width:55px!important;height:12px!important;border-radius:12px!important;background:#080611!important}
+#ams-intro .intro-phone:after{
+  inset:25px 8px 9px!important;border-radius:23px!important;
+  background:radial-gradient(circle at 50% 42%,rgba(232,121,249,.42),transparent 34%),linear-gradient(155deg,#36205d 0%,#17102b 53%,#080611 100%)!important;
+  border:1px solid rgba(233,213,255,.45)!important;box-shadow:inset 0 0 32px rgba(192,132,252,.2)!important;
+}
+#ams-intro .ams-intro-phone-logo{position:absolute;z-index:3;left:0;right:0;top:46%;transform:translateY(-50%);font-size:clamp(28px,7vw,40px);font-weight:950;letter-spacing:.17em;color:#f5eaff;text-shadow:0 0 25px #e879f9;pointer-events:none}
+#ams-intro .ams-intro-callout{position:absolute;z-index:4;display:flex;flex-direction:column;gap:5px;padding:11px 13px;border:1px solid rgba(216,180,254,.4);border-radius:14px;background:linear-gradient(140deg,rgba(48,31,75,.84),rgba(15,11,28,.82));box-shadow:0 12px 35px #0006;backdrop-filter:blur(12px);text-align:left;animation:ams-v28-callout 4s ease-in-out infinite}
+#ams-intro .ams-intro-callout b{font-size:23px;color:#e9d5ff;line-height:1}
+#ams-intro .ams-intro-callout span{font-size:8px;letter-spacing:.12em;color:#d8b4fe;white-space:nowrap}
+#ams-intro .ams-intro-callout-left{left:1%;top:43%;transform:rotate(-8deg)}
+#ams-intro .ams-intro-callout-right{right:0;top:60%;transform:rotate(7deg);animation-delay:-1.8s}
+#ams-intro .ams-intro-bottom{width:min(520px,100%);display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:12px}
+#ams-intro .ams-intro-bottom>span{font-size:9px;letter-spacing:.08em;color:#b9a7d7;text-align:left}
+#ams-intro .intro-button{border:1px solid rgba(255,255,255,.24)!important;border-radius:999px!important;padding:12px 20px!important;color:#170d2a!important;font-size:12px!important;font-weight:900!important;background:linear-gradient(100deg,#c4b5fd,#e879f9)!important;box-shadow:0 8px 32px rgba(167,139,250,.38)!important;white-space:nowrap}
+#ams-intro .intro-skip{margin:7px auto 0!important;color:#c4b5fd!important;font-size:10px!important}
+@keyframes ams-v28-phone-float{0%,100%{transform:translateY(5px) rotateY(-13deg) rotateX(5deg) rotateZ(-4deg)}50%{transform:translateY(-12px) rotateY(13deg) rotateX(-3deg) rotateZ(3deg)}}
+@keyframes ams-v28-orbit{to{transform:rotateX(70deg) rotateZ(340deg)}}
+@keyframes ams-v28-aura{0%,100%{transform:scale(.9);opacity:.75}50%{transform:scale(1.12);opacity:1}}
+@keyframes ams-v28-callout{0%,100%{translate:0 0}50%{translate:0 -8px}}
+@media(max-width:520px){
+ #ams-intro .ams-intro-topbar{min-height:68px;padding:11px 17px}
+ #ams-intro .ams-intro-logo{width:39px;height:39px}
+ #ams-intro .ams-intro-brand strong{font-size:10px}
+ #ams-intro .intro-content{height:calc(100% - 68px);padding:27px 16px 9px}
+ #ams-intro .intro-scene{width:100%;min-height:285px;height:43vh;max-height:390px}
+ #ams-intro .intro-phone{width:158px!important;height:300px!important}
+ #ams-intro .ams-intro-callout-left{left:-1%;top:43%}
+ #ams-intro .ams-intro-callout-right{right:-1%;top:61%}
+ #ams-intro .ams-intro-callout{padding:9px 10px}
+ #ams-intro .ams-intro-callout b{font-size:20px}
+ #ams-intro .ams-intro-callout span{font-size:7px}
+ #ams-intro .ams-intro-bottom>span{font-size:8px}
+}
+@media(max-height:700px){#ams-intro .intro-content{padding-top:15px}#ams-intro .intro-scene{min-height:230px}#ams-intro .intro-phone{height:260px!important;width:138px!important}}
+@media(prefers-reduced-motion:reduce){#ams-intro .intro-phone,#ams-intro .ams-intro-orbit,#ams-intro .ams-intro-aura,#ams-intro .ams-intro-callout{animation:none!important}}
+</style>
+
+
+<style id="ams-v29-scroll-phone-hard-visible">
+/* V29: robust fallback phone shell for the actual scrolling 01/03 scene */
+#ams-3d-experience #ams-world-stage{
+  position:absolute!important;display:block!important;visibility:visible!important;
+  overflow:visible!important;isolation:isolate!important;perspective:1200px!important;
+}
+#ams-3d-experience #ams-world-phone{
+  display:block!important;visibility:visible!important;opacity:1!important;
+  position:absolute!important;left:50%!important;top:48%!important;
+  width:clamp(150px,20vw,225px)!important;height:clamp(285px,39vw,405px)!important;
+  margin:0!important;padding:0!important;
+  border:5px solid #d8c4ff!important;border-radius:36px!important;
+  background:linear-gradient(145deg,#c4b5fd 0%,#47316f 13%,#17102b 48%,#090711 100%)!important;
+  box-shadow:0 0 0 2px #ffffff24,0 25px 70px #000b,0 0 42px #a78bfa99,inset 0 0 0 2px #ffffff33!important;
+  transform:translate(-50%,-50%) rotateY(-18deg) rotateX(5deg) rotateZ(-5deg)!important;
+  transform-style:preserve-3d!important;z-index:40!important;
+  overflow:visible!important;filter:none!important;
+}
+#ams-3d-experience #ams-world-phone::before{
+  content:"";display:block!important;position:absolute!important;
+  inset:7px!important;border-radius:27px!important;z-index:2!important;
+  background:
+    radial-gradient(circle at 50% 40%,#c084fc66,transparent 34%),
+    linear-gradient(155deg,#352052 0%,#17102b 48%,#080611 100%)!important;
+  border:1px solid #e9d5ff99!important;box-shadow:inset 0 0 28px #a78bfa55!important;
+  pointer-events:none!important;
+}
+#ams-3d-experience #ams-world-phone::after{
+  content:"AMS";display:flex!important;align-items:center!important;justify-content:center!important;
+  position:absolute!important;inset:0!important;z-index:8!important;
+  color:#f5eaff!important;font-size:31px!important;font-weight:950!important;letter-spacing:.2em!important;
+  text-shadow:0 0 22px #e879f9,0 0 45px #a78bfa!important;pointer-events:none!important;
+}
+#ams-3d-experience #ams-world-phone .ams-phone-front,
+#ams-3d-experience #ams-world-phone .ams-phone-back,
+#ams-3d-experience #ams-world-phone .ams-phone-edge{
+  display:none!important;
+}
+#ams-3d-experience .ams-world-orbit,
+#ams-3d-experience .ams-world-platform,
+#ams-3d-experience .ams-world-halo{z-index:1!important;pointer-events:none!important}
+#ams-3d-experience .ams-world-object{z-index:50!important}
+#ams-3d-experience .ams-world-copy{z-index:55!important}
+@media(max-width:760px){
+  #ams-3d-experience #ams-world-stage{
+    left:0!important;right:0!important;width:100%!important;
+    height:65%!important;top:64%!important;transform:translateY(-50%)!important;
+  }
+  #ams-3d-experience #ams-world-phone{
+    left:50%!important;top:48%!important;
+    width:150px!important;height:286px!important;
+    transform:translate(-50%,-50%) rotateY(-15deg) rotateX(4deg) rotateZ(-4deg)!important;
+  }
+}
+@media(prefers-reduced-motion:no-preference){
+  #ams-3d-experience #ams-world-phone{animation:ams-v29-scroll-phone-float 5s ease-in-out infinite!important}
+}
+@keyframes ams-v29-scroll-phone-float{
+  0%,100%{translate:0 5px}
+  50%{translate:0 -10px}
+}
+</style>
+
+
+<style id="ams-v30-replace-empty-scroll-stage-with-3d-phone">
+/* Hide the empty yellow-looking halo/ring effect from the old scene. */
+#ams-3d-experience .ams-world-halo{display:none!important}
+#ams-3d-experience .ams-world-orbit{display:none!important}
+#ams-3d-experience .ams-world-platform{opacity:.35!important;border-color:rgba(192,132,252,.24)!important}
+
+/* New independent 3D phone: does not depend on the old phone's broken CSS/JS. */
+#ams-3d-experience #ams-world-stage{position:absolute!important;isolation:isolate!important;overflow:visible!important}
+#ams-3d-experience .ams-v30-phone{
+  position:absolute!important;display:block!important;visibility:visible!important;opacity:1!important;
+  left:50%!important;top:47%!important;width:clamp(156px,21vw,222px)!important;height:clamp(300px,41vw,420px)!important;
+  transform:translate(-50%,-50%) rotateY(-19deg) rotateX(5deg) rotateZ(-5deg)!important;
+  transform-style:preserve-3d!important;z-index:100!important;
+  border-radius:37px!important;padding:7px!important;
+  background:linear-gradient(125deg,#f1eaff 0%,#a78bfa 9%,#40305f 24%,#100b1c 72%,#d8b4fe 100%)!important;
+  border:1px solid #eadcff!important;
+  box-shadow:inset 0 0 0 2px #ffffff44,0 28px 65px #000b,0 0 48px #a855f766!important;
+  animation:ams-v30-float 5s ease-in-out infinite!important;
+}
+#ams-3d-experience .ams-v30-phone-screen{
+  position:relative!important;width:100%!important;height:100%!important;overflow:hidden!important;
+  border-radius:30px!important;border:1px solid #e9d5ff88!important;
+  background:
+   radial-gradient(circle at 50% 46%,#a855f766,transparent 32%),
+   linear-gradient(155deg,#38235f 0%,#1a1230 48%,#080611 100%)!important;
+  box-shadow:inset 0 0 35px #c084fc44!important;
+}
+#ams-3d-experience .ams-v30-speaker{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:52px;height:10px;border-radius:12px;background:#05040a;border:1px solid #a78bfa88;z-index:5}
+#ams-3d-experience .ams-v30-camera{position:absolute;top:11px;left:calc(50% + 32px);width:7px;height:7px;border-radius:50%;background:#30204c;box-shadow:inset 0 0 0 2px #a78bfa;z-index:6}
+#ams-3d-experience .ams-v30-screen-brand{position:absolute;top:23%;left:0;right:0;text-align:center;font-size:clamp(27px,5vw,39px);font-weight:950;letter-spacing:.22em;color:#f7efff;text-shadow:0 0 24px #e879f9}
+#ams-3d-experience .ams-v30-screen-line{position:absolute;top:38%;left:25%;width:50%;height:1px;background:linear-gradient(90deg,transparent,#e9d5ff,transparent)}
+#ams-3d-experience .ams-v30-screen-title{position:absolute;top:43%;left:0;right:0;text-align:center;font-size:clamp(17px,3vw,24px);line-height:1.08;letter-spacing:.12em;color:#d8b4fe}
+#ams-3d-experience .ams-v30-screen-title b{color:#fff;font-weight:900}
+#ams-3d-experience .ams-v30-screen-orb{position:absolute;left:50%;top:64%;width:88px;height:88px;transform:translate(-50%,-50%);border-radius:50%;border:1px solid #e9d5ffbb;background:radial-gradient(circle,#e879f955 0%,#7c3aed33 48%,transparent 72%);box-shadow:0 0 28px #a855f788,inset 0 0 20px #c084fc77}
+#ams-3d-experience .ams-v30-screen-footer{position:absolute;bottom:9%;left:0;right:0;text-align:center;font-size:7px;letter-spacing:.12em;color:#c4b5fd}
+#ams-3d-experience .ams-v30-phone-side{position:absolute;right:-7px;top:35px;width:7px;height:65px;border-radius:0 5px 5px 0;background:linear-gradient(#e9d5ff,#6d4aa4,#c4b5fd);transform:translateZ(-3px)}
+#ams-3d-experience .ams-v30-camera-bump{position:absolute;right:14px;top:17px;width:47px;height:47px;border-radius:14px;background:linear-gradient(145deg,#b9a0e8,#312347);border:1px solid #f0e7ff;box-shadow:0 5px 14px #0008;transform:translateZ(-5px) rotateY(180deg);opacity:0}
+@keyframes ams-v30-float{0%,100%{margin-top:5px}50%{margin-top:-12px}}
+@media(max-width:760px){
+ #ams-3d-experience #ams-world-stage{left:0!important;right:0!important;width:100%!important;height:65%!important;top:64%!important;transform:translateY(-50%)!important}
+ #ams-3d-experience .ams-v30-phone{left:50%!important;top:48%!important;width:158px!important;height:302px!important;transform:translate(-50%,-50%) rotateY(-16deg) rotateX(4deg) rotateZ(-4deg)!important}
+}
+@media(prefers-reduced-motion:reduce){#ams-3d-experience .ams-v30-phone{animation:none!important}}
+</style>
+
+
+<style id="ams-v32-quick-estimate-model-style">
+#estimate #estimateModel{width:100%;min-height:48px;padding:12px 14px;border:1px solid rgba(196,181,253,.3);border-radius:12px;background:#171329;color:#f5f0ff;font:inherit;outline:none}
+#estimate #estimateModel:focus{border-color:#c4b5fd;box-shadow:0 0 0 3px rgba(167,139,250,.15)}
+#estimate .field:has(#estimateModel) label{display:block;margin-bottom:8px}
+</style>
+
+
+<style id="ams-v33-owner-price-model-dropdown-style">
+#amsPriceModel{
+  width:100%;min-height:48px;padding:12px 14px;
+  border:1px solid rgba(196,181,253,.3);border-radius:12px;
+  background:#171329;color:#f5f0ff;font:inherit;outline:none;
+}
+#amsPriceModel:focus{border-color:#c4b5fd;box-shadow:0 0 0 3px rgba(167,139,250,.15)}
+</style>
+
+
+<style id="ams-v34-guided-quote-wizard-style">
+.ams-quote-wizard{max-width:760px;margin-inline:auto}
+.ams-quote-progress-head{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#d8b4fe;font-size:11px;letter-spacing:.12em;font-weight:850;margin-bottom:12px}
+.ams-quote-progress-head strong{color:#f5f0ff;font-size:12px;letter-spacing:0}
+.ams-quote-progress{height:6px;border-radius:99px;background:#302542;overflow:hidden;margin-bottom:28px}
+.ams-quote-progress span{display:block;height:100%;width:20%;border-radius:99px;background:linear-gradient(90deg,#a78bfa,#e879f9);transition:width .25s ease}
+.ams-quote-step{display:none}
+.ams-quote-step.is-active{display:block;animation:amsQuoteIn .22s ease both}
+.ams-quote-step-number{font-size:11px;font-weight:900;letter-spacing:.18em;color:#c4b5fd;margin-bottom:10px}
+.ams-quote-step h3{font-size:clamp(21px,4vw,27px);color:#fff;margin:0 0 8px}
+.ams-quote-step>p{color:#bdb2d1;font-size:14px;line-height:1.6;margin:0 0 22px}
+.ams-quote-step .field{margin-bottom:15px}
+.ams-quote-step .field label{display:block;color:#e2d8f0;font-weight:750;margin-bottom:9px}
+.ams-quote-step select,.ams-quote-step input,.ams-quote-step textarea{box-sizing:border-box;width:100%;min-height:54px;border:1px solid rgba(196,181,253,.28);border-radius:14px;padding:14px 16px;background:#100d1d;color:#f8f4ff;font:inherit;outline:none}
+.ams-quote-step textarea{min-height:112px;resize:vertical}
+.ams-quote-step select:focus,.ams-quote-step input:focus,.ams-quote-step textarea:focus{border-color:#c4b5fd;box-shadow:0 0 0 3px rgba(167,139,250,.14)}
+.ams-other-model-field[hidden]{display:none!important}
+.ams-quote-hint,.ams-quote-status-note{padding:12px 14px;border-radius:12px;background:rgba(167,139,250,.09);color:#c9bddc;font-size:12px;line-height:1.6}
+.ams-quote-hint span{color:#d8b4fe;font-weight:900;margin-right:6px}
+.ams-quote-nav{display:flex;justify-content:space-between;gap:12px;margin-top:25px}
+.ams-quote-nav button{min-width:116px;cursor:pointer}
+.ams-quote-nav button:disabled{opacity:.38;cursor:not-allowed}
+.ams-quote-validation{min-height:18px;margin:10px 0 0;color:#f0abfc;font-size:12px}
+.ams-quote-summary{display:grid;gap:9px;padding:15px;margin:18px 0;border:1px solid rgba(196,181,253,.2);border-radius:14px;background:rgba(10,8,19,.38)}
+.ams-quote-summary div{display:flex;justify-content:space-between;gap:15px;color:#bdb2d1;font-size:13px}
+.ams-quote-summary strong{color:#f5f0ff;text-align:right}
+.ams-guided-estimate-result{margin-top:0}
+.ams-guided-estimate-result .btn{display:inline-flex;margin-top:12px;white-space:normal;text-align:center;justify-content:center}
+@keyframes amsQuoteIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:520px){.ams-quote-progress-head{align-items:flex-start;flex-direction:column;gap:5px}.ams-quote-nav button{flex:1;min-width:0}.ams-quote-summary div{font-size:12px}}
+</style>
+
+<meta name="ams-version" content="V38-owner-model-catalogue"><title>All Mobile Service &amp; Technology</title>\n</head>
+<body>
+
+<div id="ams-intro" role="dialog" aria-label="Welcome to All Mobile Service and Technology">
+  <div class="ams-intro-topbar">
+    <div class="ams-intro-brand">
+      <span class="ams-intro-logo">AMS</span>
+      <span><strong>ALL MOBILE SERVICE</strong><small>&amp; TECHNOLOGY</small></span>
+    </div>
+    <span class="ams-intro-menu-mark" aria-hidden="true">☰</span>
+  </div>
+  <div class="intro-content">
+    <div class="ams-intro-tagline"><i></i> SMARTPHONE CARE · REPAIRS · ACCESSORIES</div>
+    <div class="ams-intro-headline">
+      <span>Your phone.</span>
+      <strong>Reimagined.</strong>
+    </div>
+    <p class="ams-intro-subtitle">One stop tech shop</p>
+    <div class="intro-scene" aria-hidden="true">
+      <div class="ams-intro-aura"></div>
+      <div class="ams-intro-orbit ams-intro-orbit-one"></div>
+      <div class="ams-intro-orbit ams-intro-orbit-two"></div>
+      <div class="intro-phone"><span class="ams-intro-phone-logo">AMS</span></div>
+      <div class="ams-intro-callout ams-intro-callout-left"><b>01</b><span>PHONE REPAIRS</span></div>
+      <div class="ams-intro-callout ams-intro-callout-right"><b>02</b><span>ACCESSORIES</span></div>
+    </div>
+    <div class="ams-intro-bottom">
+      <span>Repairs · Phones · Accessories</span>
+      <a class="intro-button" id="ams-enter" href="#main-content" style="display:inline-block;text-decoration:none">Explore AMS&nbsp; ↗</a>
+    </div>
+    <button class="intro-skip" id="ams-skip" type="button">Skip introduction</button>
+  </div>
+</div>
+
+<header><div class="wrap nav"><a class="brand" href="#">ALL MOBILE SERVICE <span>&amp; TECHNOLOGY</span></a><button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNav">☰ Menu</button><nav class="navlinks" id="mainNav">
+<a href="#owner-preview" id="ownerNavLink">Owner dashboard</a><a href="#repairs">Repair prices</a><a href="#estimate">Get estimate</a><a href="#phones">Phones</a><a href="#brands">Brands</a><a href="#contact">Contact</a></nav><a class="navcta" href="https://wa.me/917997783006?text=Hello%2C%20I%20want%20to%20enquire%20about%20a%20mobile%20repair.">WhatsApp us</a></div></header>
+<main>
+<section class="hero" id="main-content"><div class="wrap hero-grid"><div><div class="eyebrow">Mobile care, made simple</div><h1>Your phone.<br>Back to its best.</h1><p>Reliable mobile repairs, clear starting prices and carefully selected smartphones — all in one place. Explore common repair costs before you visit.</p><div class="hero-actions"><a class="btn" href="#repairs">View repair prices</a><a class="btn light" href="tel:+917997783006">Call 7997783006</a></div><p class="hero-note">Secunderabad, Hyderabad · Call 7997783006 · WhatsApp available</p></div><div class="device-stage"><div class="glow"></div><div class="phone"></div><div class="float-card fc1">✓ Screen repairs<small>Clear starting prices</small></div><div class="float-card fc2">Fast diagnosis<small>Ask before you repair</small></div></div></div></section>
+
+<section class="ams-scroll-world" id="ams-3d-experience" aria-label="Interactive 3D service experience">
+  <div class="ams-world-sticky">
+    <div class="ams-world-grid"></div>
+    <div class="ams-world-topline"><span>ALL MOBILE SERVICE &amp; TECHNOLOGY</span><span id="ams-scene-counter">01 / 03</span></div>
+
+    <div class="ams-world-copy">
+      <div class="ams-world-step active" data-scene="0">
+        <span class="ams-world-kicker">01 — THE DEVICE</span>
+        <h2>Your phone.<br><em>Reimagined.</em></h2>
+        <p>A cinematic look at the technology you carry every day.</p>
+        <a href="#repairs">Discover repair services <b>↗</b></a>
+      </div>
+      <div class="ams-world-step" data-scene="1">
+        <span class="ams-world-kicker">02 — THE REPAIR</span>
+        <h2>Precision in<br><em>every detail.</em></h2>
+        <p>From screen and battery concerns to charging and software support, start with the right diagnosis.</p>
+        <a href="#estimate">Explore repair estimates <b>↗</b></a>
+      </div>
+      <div class="ams-world-step" data-scene="2">
+        <span class="ams-world-kicker">03 — THE EXTRAS</span>
+        <h2>Complete your<br><em>setup.</em></h2>
+        <p>Discover everyday accessories that help protect, power and connect your devices.</p>
+        <a href="#phones">Explore products <b>↗</b></a>
+      </div>
+    </div>
+
+    <div class="ams-world-stage" id="ams-world-stage">
+      <div class="ams-v30-phone" aria-label="Futuristic AMS smartphone">
+        <div class="ams-v30-phone-side"></div>
+        <div class="ams-v30-phone-screen">
+          <div class="ams-v30-speaker"></div>
+          <div class="ams-v30-camera"></div>
+          <div class="ams-v30-screen-brand">AMS</div>
+          <div class="ams-v30-screen-line"></div>
+          <div class="ams-v30-screen-title">SMART<br><b>CARE.</b></div>
+          <div class="ams-v30-screen-orb"></div>
+          <div class="ams-v30-screen-footer">REPAIR · SUPPORT · ACCESSORIES</div>
+        </div>
+        <div class="ams-v30-camera-bump"><i></i><i></i><i></i></div>
+      </div>
+      
+      <div class="ams-world-halo"></div>
+      <div class="ams-world-orbit orbit-a"></div>
+      <div class="ams-world-orbit orbit-b"></div>
+      <div class="ams-world-platform"></div>
+
+      <div class="ams-world-phone" id="ams-world-phone">
+        <div class="ams-phone-back">
+          <div class="ams-camera-island"><i></i><i></i><i></i></div>
+          <div class="ams-back-logo">AMS</div>
+          <div class="ams-back-caption">ALL MOBILE SERVICE</div>
+        </div>
+        <div class="ams-phone-front">
+          <div class="ams-phone-notch"></div>
+          <div class="ams-phone-ui">
+            <span>AMS TECHNOLOGY</span>
+            <strong id="ams-phone-scene-title">SMART<br>CARE.</strong>
+            <div class="ams-phone-ui-orb"></div>
+            <small>REPAIR · SUPPORT · ACCESSORIES</small>
+          </div>
+        </div>
+        <div class="ams-phone-edge"></div>
+      </div>
+
+      <div class="ams-world-object ams-object-screen"><span>DISPLAY</span><b>01</b></div>
+      <div class="ams-world-object ams-object-chip"><span>DIAGNOSTICS</span><b>02</b></div>
+      <div class="ams-world-object ams-object-case"><span>ACCESSORIES</span><b>03</b></div>
+      <div class="ams-world-caption" id="ams-world-caption">ENGINEERED FOR EVERYDAY</div>
+    </div>
+
+    <div class="ams-world-bottom"><span>SCROLL TO TRANSFORM</span><div class="ams-world-progress"><i id="ams-world-progress-fill"></i></div><span>03 SCENES</span></div>
+  </div>
+</section>
+
+
+<div class="trust"><div class="wrap trustrow"><div class="trustitem"><span class="check">✓</span> Upfront repair estimates</div><div class="trustitem"><span class="check">✓</span> Multiple phone brands</div><div class="trustitem"><span class="check">✓</span> Repair and retail in one place</div></div></div>
+<section class="repairs" id="repairs"><div class="wrap"><div class="section-head"><div class="kicker">Repair price list</div><h2>Know the cost before you visit.</h2><p>Sample starting prices in Indian rupees. Final cost depends on phone model, part quality and inspection.</p></div><div class="repair-tools"><button class="filter active" data-filter="all">All repairs</button><button class="filter" data-filter="screen">Screen</button><button class="filter" data-filter="battery">Battery</button><button class="filter" data-filter="charging">Charging</button><button class="filter" data-filter="software">Software</button></div><div class="repair-grid" id="repairGrid">
+<article class="repair-card" data-type="screen"><div class="repair-icon">▣</div><h3>Screen replacement</h3><p>Display and touch-screen replacement.</p><div class="price">₹1,499 <small>onwards</small></div></article>
+<article class="repair-card" data-type="battery"><div class="repair-icon">▰</div><h3>Battery replacement</h3><p>Battery health and replacement service.</p><div class="price">₹899 <small>onwards</small></div></article>
+<article class="repair-card" data-type="charging"><div class="repair-icon">ϟ</div><h3>Charging port repair</h3><p>Charging port cleaning or replacement.</p><div class="price">₹399 <small>onwards</small></div></article>
+<article class="repair-card" data-type="software"><div class="repair-icon">⌘</div><h3>Software troubleshooting</h3><p>Software issues, updates and setup.</p><div class="price">₹299 <small>onwards</small></div></article>
+<article class="repair-card" data-type="screen"><div class="repair-icon">◉</div><h3>Back glass replacement</h3><p>Back panel glass repair or replacement.</p><div class="price">₹999 <small>onwards</small></div></article>
+<article class="repair-card" data-type="charging"><div class="repair-icon">⌁</div><h3>Speaker / mic repair</h3><p>Audio, microphone and earpiece checks.</p><div class="price">₹399 <small>onwards</small></div></article>
+<article class="repair-card" data-type="software"><div class="repair-icon">⌕</div><h3>Water damage diagnosis</h3><p>Inspection and repair assessment.</p><div class="price">₹299 <small>onwards</small></div></article>
+<article class="repair-card" data-type="battery"><div class="repair-icon">◌</div><h3>Phone diagnostics</h3><p>General hardware and performance check.</p><div class="price">₹199 <small>onwards</small></div></article>
+</div><div class="repair-foot"><strong>Sample prices only:</strong> These are indicative demo prices, not confirmed quotations. Final price depends on your phone model, parts and inspection. Please confirm on WhatsApp before visiting.</div></div></section>
+<section class="estimate" id="estimate">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Guided repair quote</div>
+      <h2>Let's find the right repair price.</h2>
+      <p>Answer five quick questions. We'll show an indicative starting price and help you request a confirmed quote.</p>
+    </div>
+    <div class="estimate-box ams-quote-wizard" id="amsQuoteWizard">
+      <div class="ams-quote-progress-head">
+        <span id="amsQuoteStepLabel">STEP 1 OF 5</span>
+        <strong id="amsQuoteStepName">Your phone brand</strong>
+      </div>
+      <div class="ams-quote-progress"><span id="amsQuoteProgressBar"></span></div>
+
+      <div class="ams-quote-step is-active" data-quote-step="0">
+        <div class="ams-quote-step-number">01</div>
+        <h3>Which phone brand do you use?</h3>
+        <p>Choose the brand printed on your phone.</p>
+        <div class="field">
+          <label for="brand">Phone brand</label>
+          <select id="brand">
+            <option>Samsung</option><option>Apple iPhone</option><option>Vivo</option><option>Oppo</option>
+            <option>Realme</option><option>Redmi</option><option>Xiaomi</option><option>OnePlus</option>
+            <option>Motorola</option><option>Nothing</option><option>iQOO</option><option>Google Pixel</option>
+            <option>Tecno</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="ams-quote-step" data-quote-step="1">
+        <div class="ams-quote-step-number">02</div>
+        <h3>Select your exact phone model</h3>
+        <p>Choose your model from the list. If you can't find it, select “Other”.</p>
+        <div class="field">
+          <label for="estimateModel">Phone model</label>
+          <select id="estimateModel">
+            <option value="">Select phone model</option>
+            <option value="__other">Other / model not listed</option>
+          </select>
+        </div>
+        <div class="field ams-other-model-field" id="amsOtherModelWrap" hidden>
+          <label for="amsOtherModel">Enter your phone model</label>
+          <input id="amsOtherModel" type="text" maxlength="80" placeholder="e.g. Galaxy A55 5G">
+        </div>
+      </div>
+
+      <div class="ams-quote-step" data-quote-step="2">
+        <div class="ams-quote-step-number">03</div>
+        <h3>What repair do you need?</h3>
+        <p>Choose the issue that best describes your phone.</p>
+        <div class="field">
+          <label for="repair">Repair needed</label>
+          <select id="repair">
+            <option value="1499">Screen replacement — from ₹1,499</option>
+            <option value="899">Battery replacement — from ₹899</option>
+            <option value="399">Charging port — from ₹399</option>
+            <option value="299">Software troubleshooting — from ₹299</option>
+            <option value="999">Back glass — from ₹999</option>
+            <option value="399">Speaker / mic — from ₹399</option>
+            <option value="299">Water damage diagnosis — from ₹299</option>
+            <option value="199">Phone diagnostics — from ₹199</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="ams-quote-step" data-quote-step="3">
+        <div class="ams-quote-step-number">04</div>
+        <h3>Tell us a little more</h3>
+        <p>Describe the problem so our technician can understand what happened.</p>
+        <div class="field">
+          <label for="amsIssueDetails">Describe your phone issue (optional)</label>
+          <textarea id="amsIssueDetails" rows="4" maxlength="500" placeholder="Example: The screen is cracked, but the phone still turns on."></textarea>
+        </div>
+        <div class="ams-quote-hint"><span>ⓘ</span> You can also explain the issue directly to us on WhatsApp.</div>
+      </div>
+
+      <div class="ams-quote-step" data-quote-step="4">
+        <div class="ams-quote-step-number">05</div>
+        <h3>Your estimated repair quote</h3>
+        <p>Review your selections before requesting a confirmed price.</p>
+        <div class="ams-quote-summary" id="amsQuoteSummary"></div>
+        <div class="estimate-result ams-guided-estimate-result">
+          <div>
+            <small>Indicative starting price</small>
+            <strong id="estimatePrice">₹1,499 onwards</strong>
+            <p>This is not a final quotation. The confirmed price may depend on parts availability, exact model and device inspection.</p>
+          </div>
+          <a class="btn light" id="amsQuoteWhatsApp" href="https://wa.me/917997783006" target="_blank" rel="noopener">Request final quote on WhatsApp</a>
+        </div>
+        <div class="ams-quote-status-note">Our team will review your details and confirm the repair price with you before any repair begins.</div>
+      </div>
+
+      <div class="ams-quote-nav">
+        <button type="button" class="btn light" id="amsQuoteBack" disabled>Back</button>
+        <button type="button" class="btn" id="amsQuoteNext">Continue</button>
+      </div>
+      <p class="ams-quote-validation" id="amsQuoteValidation" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+<section class="products" id="phones"><div class="wrap"><div class="section-head"><div class="kicker">Shop smartphones</div><h2>Find your next phone.</h2><p>Showcase new and pre-owned phones here. Replace these sample categories with your actual stock and prices.</p></div><div class="product-grid"><article class="product"><div class="product-art">📱</div><h3>Latest smartphones</h3><p>Explore new models and popular brands.</p><span class="tag">ENQUIRE FOR PRICE</span></article><article class="product"><div class="product-art">✨</div><h3>Premium phones</h3><p>Discover feature-rich phones and upgrades.</p><span class="tag">ENQUIRE FOR PRICE</span></article><article class="product"><div class="product-art">♻️</div><h3>Pre-owned phones</h3><p>Browse inspected second-hand devices.</p><span class="tag">ENQUIRE FOR PRICE</span></article></div></div></section>
+<section style="background:#fff;padding-top:48px;padding-bottom:48px" id="brands"><div class="wrap"><div class="section-head"><div class="kicker">Brands we service</div><h2>Repairs across popular brands.</h2><p>Choose your phone brand when requesting a repair estimate.</p></div><div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap"><span style="padding:10px 15px;border:1px solid #e7ebf2;border-radius:999px;background:#f8faff;font-size:13px;font-weight:750">Samsung</span><span style="padding:10px 15px;border:1px solid #e7ebf2;border-radius:999px;background:#f8faff;font-size:13px;font-weight:750">Apple</span><span style="padding:10px 15px;border:1px solid #e7ebf2;border-radius:999px;background:#f8faff;font-size:13px;font-weight:750">Vivo</span><span style="padding:10px 15px;border:1px solid #e7ebf2;border-radius:999px;background:#f8faff;font-size:13px;font-weight:750">Oppo</span><span style="padding:10px 15px;border:1px solid #e7ebf2;border-radius:999px;background:#f8faff;font-size:13px;font-weight:750">Realme</span><span style="padding:10px 15px;border:1px solid #e7ebf2;border-radius:999px;background:#f8faff;font-size:13px;font-weight:750">Redmi</span><span style="padding:10px 15px;border:1px solid #e7ebf2;border-radius:999px;background:#f8faff;font-size:13px;font-weight:750">Xiaomi</span><span style="padding:10px 15px;border:1px solid #e7ebf2;border-radius:999px;background:#f8faff;font-size:13px;font-weight:750">OnePlus</span><span style="padding:10px 15px;border:1px solid #e7ebf2;border-radius:999px;background:#f8faff;font-size:13px;font-weight:750">Motorola</span><span style="padding:10px 15px;border:1px solid #e7ebf2;border-radius:999px;background:#f8faff;font-size:13px;font-weight:750">Nothing</span><span style="padding:10px 15px;border:1px solid #e7ebf2;border-radius:999px;background:#f8faff;font-size:13px;font-weight:750">iQOO</span><span style="padding:10px 15px;border:1px solid #e7ebf2;border-radius:999px;background:#f8faff;font-size:13px;font-weight:750">Google Pixel</span><span style="padding:10px 15px;border:1px solid #e7ebf2;border-radius:999px;background:#f8faff;font-size:13px;font-weight:750">Tecno</span></div></div></section>
+
+<section style="background:#eef4ff;padding:38px 0" id="platform">
+  <div class="wrap" style="text-align:center;max-width:820px">
+    <div class="kicker">Business platform</div>
+    <h2 style="margin:10px 0">More than a repair website.</h2>
+    <p style="color:#667085;line-height:1.7;margin:0">Our next development stages will add secure owner access, booking management, repair tracking, staff roles, accessories inventory and digital invoices. These management features will be connected only after the database and security setup is tested.</p>
+  </div>
+</section>
+<section class="how"><div class="wrap"><div class="section-head"><div class="kicker">Simple process</div><h2>Repair in three easy steps.</h2></div><div class="steps"><article class="step"><div class="num">01 / TELL US</div><h3>Choose your issue</h3><p>Select the repair you need and note your phone brand and model.</p></article><article class="step"><div class="num">02 / GET A QUOTE</div><h3>Confirm the price</h3><p>Have the device checked and receive a final quote before work begins.</p></article><article class="step"><div class="num">03 / GET IT FIXED</div><h3>Collect your phone</h3><p>Approve the repair and ask the shop about service and part warranty.</p></article></div></div></section>
+<section class="contact" id="contact"><div class="wrap contact-grid"><div><div class="eyebrow">We're here to help</div><h2>Let's get your phone sorted.</h2><p>Visit or contact us for mobile repair enquiries and smartphone assistance. We are based in Secunderabad, Hyderabad.</p><p><strong>Shop:</strong> All Mobile Service &amp; Technology<br><strong>Location:</strong> Secunderabad, Hyderabad<br><strong>Call:</strong> <a href="tel:+917997783006">7997783006</a><br><strong>WhatsApp:</strong> <a href="https://wa.me/917997783006" target="_blank" rel="noopener">Chat with us</a></p></div><form class="contact-card" id="enquiry"><h3>Request a repair quote</h3><label for="customer">Your name</label><input id="customer" required="" placeholder="Enter your name"><label for="model">Phone model</label><input id="model" required="" placeholder="e.g. Samsung Galaxy A series"><label for="issue">What needs fixing?</label><textarea id="issue" required="" placeholder="Describe the issue"></textarea><button class="btn" type="submit">Send enquiry on WhatsApp</button><p style="font-size:11px;color:#b8c4d7;margin-bottom:0">Your enquiry will open in WhatsApp addressed to 7997783006. Review it and tap Send.</p></form></div></section>
+</main><footer><div class="wrap footerrow"><span>© 2026 All Mobile Service &amp; Technology · Secunderabad, Hyderabad · <a href="tel:+917997783006">7997783006</a></span><span>Repair prices are indicative and subject to inspection.</span></div></footer>
+
+
+<script>
+(function () {
+  const phone = "917997783006";
+  const form = document.getElementById("enquiry");
+  if (form) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const name = document.getElementById("customer").value.trim();
+      const model = document.getElementById("model").value.trim();
+      const issue = document.getElementById("issue").value.trim();
+      const message = "Hello, I would like a repair quote.%0AName: " +
+        encodeURIComponent(name) + "%0APhone model: " +
+        encodeURIComponent(model) + "%0AIssue: " + encodeURIComponent(issue);
+      window.open("https://wa.me/" + phone + "?text=" + message, "_blank", "noopener");
+    });
+  }
+
+  const repairSelect = document.getElementById("repair");
+  const estimatePrice = document.getElementById("estimatePrice");
+  if (repairSelect && estimatePrice) {
+    repairSelect.addEventListener("change", function () {
+      estimatePrice.textContent = "₹" + Number(repairSelect.value).toLocaleString("en-IN") + " onwards";
+    });
+  }
+
+  const filterButtons = document.querySelectorAll("[data-filter]");
+  const repairCards = document.querySelectorAll("#repairGrid .repair-card");
+  filterButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      filterButtons.forEach(function (item) { item.classList.remove("active"); });
+      button.classList.add("active");
+      const filter = button.getAttribute("data-filter");
+      repairCards.forEach(function (card) {
+        card.hidden = !(filter === "all" || card.getAttribute("data-type") === filter);
+      });
+    });
+  });
+
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("mainNav");
+  if (toggle && nav) {
+    toggle.addEventListener("click", function () {
+      const open = nav.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(open));
+    });
+    nav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+})();
+</script>
+
+
+<section id="owner-preview" style="padding:56px 0;background:#0b1428;color:#f5f8ff">
+  <div class="wrap" style="max-width:1120px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+      <div>
+        <div style="color:#69d9ff;font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:12px">Stage 2 · Dashboard interface preview</div>
+        <h2 style="color:#fff;margin:8px 0">Business control centre</h2>
+        <p style="color:#b8c5dc;margin:0">A first look at the tools planned for the owner and team.</p>
+      </div>
+      <span style="border:1px solid #55708f;border-radius:999px;padding:7px 12px;color:#ffdc8a;font-size:12px">PREVIEW · SAMPLE DATA</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:26px 0">
+      <div style="background:#14233e;border:1px solid #294365;border-radius:16px;padding:18px"><div style="color:#b8c5dc;font-size:13px">New bookings</div><div style="font-size:30px;font-weight:800;margin-top:8px">08</div><div style="color:#8fa7c7;font-size:12px">Sample figure</div></div>
+      <div style="background:#14233e;border:1px solid #294365;border-radius:16px;padding:18px"><div style="color:#b8c5dc;font-size:13px">Repairs in progress</div><div style="font-size:30px;font-weight:800;margin-top:8px">05</div><div style="color:#8fa7c7;font-size:12px">Sample figure</div></div>
+      <div style="background:#14233e;border:1px solid #294365;border-radius:16px;padding:18px"><div style="color:#b8c5dc;font-size:13px">Low-stock items</div><div style="font-size:30px;font-weight:800;margin-top:8px">03</div><div style="color:#8fa7c7;font-size:12px">Sample figure</div></div>
+      <div style="background:#14233e;border:1px solid #294365;border-radius:16px;padding:18px"><div style="color:#b8c5dc;font-size:13px">Today's collections</div><div style="font-size:30px;font-weight:800;margin-top:8px">₹—</div><div style="color:#8fa7c7;font-size:12px">Not connected to payments</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <div style="background:#14233e;border:1px solid #294365;border-radius:16px;padding:20px"><div style="font-size:23px">📅</div><h3 style="color:#fff;margin:10px 0 6px">Bookings</h3><p style="color:#b8c5dc;margin:0">Review customer requests and confirm appointments.</p></div>
+      <div style="background:#14233e;border:1px solid #294365;border-radius:16px;padding:20px"><div style="font-size:23px">🛠️</div><h3 style="color:#fff;margin:10px 0 6px">Repair jobs</h3><p style="color:#b8c5dc;margin:0">Assign technicians and update repair progress.</p></div>
+      <div style="background:#14233e;border:1px solid #294365;border-radius:16px;padding:20px"><div style="font-size:23px">📦</div><h3 style="color:#fff;margin:10px 0 6px">Inventory</h3><p style="color:#b8c5dc;margin:0">Manage accessories, quantities and reorder alerts.</p></div><a href="#ams-phone-inventory" class="ams-owner-phone-tile" style="background:#14233e;border:1px solid #294365;border-radius:16px;padding:20px;display:block;text-decoration:none"><div style="font-size:23px">📱</div><h3 style="color:#fff;margin:10px 0 6px">Phone models</h3><p style="color:#b8c5dc;margin:0">Manage phone brands, exact models, selling prices and stock quantities.</p><span class="ams-owner-tile-link">Open phone model manager →</span></a>
+      <div style="background:#14233e;border:1px solid #294365;border-radius:16px;padding:20px"><div style="font-size:23px">🧾</div><h3 style="color:#fff;margin:10px 0 6px">Invoices</h3><p style="color:#b8c5dc;margin:0">Prepare receipts and track amounts due.</p></div>
+      <div style="background:#14233e;border:1px solid #294365;border-radius:16px;padding:20px"><div style="font-size:23px">👥</div><h3 style="color:#fff;margin:10px 0 6px">Staff access</h3><p style="color:#b8c5dc;margin:0">Plan roles for owner, manager and technician.</p></div>
+      <div style="background:#14233e;border:1px solid #294365;border-radius:16px;padding:20px"><div style="font-size:23px">📊</div><h3 style="color:#fff;margin:10px 0 6px">Reports</h3><p style="color:#b8c5dc;margin:0">View sales, repair activity and business summaries.</p></div>
+    </div>
+    <div class="ams-owner-inventory-heading"><span class="ams-price-eyebrow">OWNER AMS TOOLS</span><h3>Phone model management</h3><p>Add and manage the exact phone models available in your shop, just like your accessories inventory.</p></div>
+  <div class="ams-model-panel" id="ams-phone-inventory">
+    <div class="ams-price-panel-head">
+      <div><span class="ams-price-eyebrow">OWNER CONTROL · PHONE INVENTORY</span><h3>Manage phone models</h3></div>
+      <span class="ams-preview-tag">STARTER CATALOGUE · LOCAL PREVIEW</span>
+    </div>
+    <p class="ams-model-intro">Add the exact smartphone models available in your shop, set their selling prices and mark them as new or pre-owned.</p>
+    <div class="ams-model-fields">
+      <label>Brand
+        <select id="amsModelBrand">
+          <option>Samsung</option><option>Apple</option><option>Vivo</option><option>Oppo</option>
+          <option>Realme</option><option>Redmi</option><option>Xiaomi</option><option>OnePlus</option>
+          <option>Motorola</option><option>Nothing</option><option>iQOO</option><option>Google Pixel</option><option>Other</option>
+        </select>
+      </label>
+      <label>Phone model
+        <input id="amsModelName" type="text" maxlength="70" placeholder="e.g. Samsung Galaxy A55">
+      </label>
+      <label>Condition
+        <select id="amsModelCondition"><option>New</option><option>Pre-owned</option></select>
+      </label>
+      <label>Selling price (₹)
+        <input id="amsModelPrice" type="number" min="0" step="1" inputmode="numeric" placeholder="Enter price">
+      </label>
+      <label>Available quantity
+        <input id="amsModelStock" type="number" min="0" step="1" inputmode="numeric" value="1">
+      </label>
+    </div>
+    <div class="ams-price-actions">
+      <button type="button" class="btn" id="amsAddModel">Add phone model</button>
+      <button type="button" class="btn light" id="amsClearModelForm">Clear fields</button>
+    </div>
+    <p class="ams-price-notice" id="amsModelNotice" role="status">Starter model names are preloaded for selection. They are not shop stock or prices. Edit each model to enter your actual selling price and quantity. Changes stay in this browser only until database connection.</p>
+    <div class="ams-model-list-head"><h3>Phone models list</h3><span id="amsModelCount" class="ams-preview-tag">0 MODELS</span></div>
+    <div id="amsModelRows" class="ams-model-rows" aria-live="polite">
+      <p class="ams-model-empty">No phone models added yet. Add your first model above.</p>
+    </div>
+  </div>
+    <p style="color:#ffdc8a;font-size:13px;line-height:1.6;margin:22px 0 0">Important: this is an interface preview only. It has no login, live customer records, staff accounts or database connection yet. We will add secure authentication and connect Cloudflare D1 before using it for real business data.</p>
+  </div>
+</section>
+
+
+<script>
+(function () {
+  var screen = document.getElementById("ams-intro");
+  if (!screen) return;
+  var closeIntro = function () {
+    screen.classList.add("ams-leaving");
+    window.setTimeout(function () {
+      if (screen && screen.parentNode) screen.parentNode.removeChild(screen);
+    }, 850);
+  };
+  var enter = document.getElementById("ams-enter");
+  var skip = document.getElementById("ams-skip");
+  if (enter) enter.addEventListener("click", function () { closeIntro(); });
+  if (skip) skip.addEventListener("click", closeIntro);
+  window.setTimeout(closeIntro, 7000);
+})();
+</script>
+
+
+<script>
+(function () {
+  var section = document.getElementById("ams-3d-experience");
+  if (!section) return;
+  var steps = Array.prototype.slice.call(section.querySelectorAll(".ams-world-step"));
+  var counter = document.getElementById("ams-scene-counter");
+  var progress = document.getElementById("ams-world-progress-fill");
+  var title = document.getElementById("ams-phone-scene-title");
+  var caption = document.getElementById("ams-world-caption");
+  var labels = [
+    { title: "SMART<br>CARE.", caption: "ENGINEERED FOR EVERYDAY" },
+    { title: "PRECISION<br>REPAIR.", caption: "CARE FOR EVERY COMPONENT" },
+    { title: "POWER<br>YOUR DAY.", caption: "ACCESSORIES FOR YOUR SETUP" }
+  ];
+  var active = -1;
+  var ticking = false;
+  function updateScene() {
+    ticking = false;
+    var rect = section.getBoundingClientRect();
+    var maxScroll = Math.max(1, section.offsetHeight - window.innerHeight);
+    var travelled = Math.min(maxScroll, Math.max(0, -rect.top));
+    var ratio = travelled / maxScroll;
+    var scene = Math.min(2, Math.floor(ratio * 3));
+    if (scene !== active) {
+      active = scene;
+      section.setAttribute("data-scene", String(scene));
+      steps.forEach(function (step, index) { step.classList.toggle("active", index === scene); });
+      if (counter) counter.textContent = "0" + (scene + 1) + " / 03";
+      if (title) title.innerHTML = labels[scene].title;
+      if (caption) caption.textContent = labels[scene].caption;
+    }
+    if (progress) progress.style.width = Math.round(ratio * 100) + "%";
+  }
+  function requestUpdate() {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(updateScene); }
+  }
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", requestUpdate);
+  updateScene();
+})();
+</script>
+
+
+<script id="ams-v22-menu-script">
+(function () {
+  function initAmsMenu() {
+    var header = document.querySelector('header');
+    if (!header || header.dataset.amsMenuReady === '1') return;
+    var toggle = header.querySelector('#menuToggle');
+    var nav = header.querySelector('#mainNav');
+    if (!toggle || !nav) return;
+    header.dataset.amsMenuReady = '1';
+    function setOpen(open) {
+      nav.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.textContent = open ? '✕ Close' : '☰ Menu';
+    }
+    toggle.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      setOpen(!nav.classList.contains('open'));
+    });
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () { setOpen(false); });
+    });
+    document.addEventListener('click', function (event) {
+      if (!header.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setOpen(false);
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 760) setOpen(false);
+    });
+    setOpen(false);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAmsMenu);
+  else initAmsMenu();
+})();
+</script>
+
+
+<section id="ams-owner-price-editor" class="ams-price-editor">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker">Owner control · Price management</div>
+      <h2>Manage repair prices</h2>
+      <p>Choose a phone brand and service, update its starting price, and preview the customer-facing catalogue.</p>
+    </div>
+    <div class="ams-price-panel">
+      <div class="ams-price-panel-head"><div><span class="ams-price-eyebrow">AMS OWNER TOOLS</span><h3>Price editor</h3></div><span class="ams-preview-tag">LOCAL PREVIEW</span></div>
+      <div class="ams-price-fields">
+        <label>Phone brand<select id="amsPriceBrand"><option>Samsung</option><option>Apple iPhone</option><option>Vivo</option><option>Oppo</option><option>Realme</option><option>Redmi</option><option>Xiaomi</option><option>OnePlus</option><option>Motorola</option></select></label>
+        <label>Phone model<select id="amsPriceModel"><option value="">Select phone model</option><option value="__other">Other / model not listed</option></select></label>
+        <label>Repair service<select id="amsPriceService"><option>Display replacement</option><option>Battery replacement</option><option>Charging port repair</option><option>Back panel replacement</option><option>Speaker / microphone repair</option><option>Camera repair</option></select></label>
+        <label>Starting price (₹)<input id="amsPriceAmount" type="number" min="0" step="1" inputmode="numeric" placeholder="Enter amount"></label>
+      </div>
+      <div class="ams-price-actions"><button type="button" class="btn" id="amsApplyPrice">Update preview price</button><button type="button" class="btn light" id="amsResetPrices">Reset sample prices</button></div>
+      <p class="ams-price-notice" id="amsPriceNotice" role="status">Preview mode: changes are saved only in this browser on this device. This is not yet connected to owner login or Cloudflare D1.</p>
+    </div>
+
+    <div class="ams-price-catalogue">
+      <div class="ams-price-catalogue-head"><div><span class="ams-price-eyebrow">CUSTOMER VIEW</span><h3 id="amsCatalogueTitle">Samsung repair catalogue</h3></div><span class="ams-preview-tag">SAMPLE PRICES</span></div>
+      <div id="amsPriceRows" class="ams-price-rows" aria-live="polite"></div>
+    </div>
+  </div>
+
+
+</section>
+<style>
+.ams-price-editor{background:linear-gradient(180deg,#090711,#100d1d);color:#f5f0ff;border-top:1px solid rgba(196,181,253,.12)}
+.ams-price-editor .kicker{color:#c4b5fd}.ams-price-editor .section-head h2{color:#faf7ff}.ams-price-editor .section-head p{color:#aaa2bd}
+.ams-price-panel,.ams-price-catalogue{max-width:980px;margin:22px auto 0;padding:24px;border:1px solid rgba(196,181,253,.2);border-radius:22px;background:linear-gradient(145deg,rgba(35,27,57,.94),rgba(18,15,31,.97));box-shadow:0 18px 55px rgba(0,0,0,.24)}
+.ams-price-panel-head,.ams-price-catalogue-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.ams-price-panel h3,.ams-price-catalogue h3{color:#fff;margin:5px 0 0;font-size:22px}.ams-price-eyebrow{font-size:10px;letter-spacing:1.6px;font-weight:850;color:#c4b5fd}
+.ams-preview-tag{font-size:10px;font-weight:800;letter-spacing:1px;color:#e9d5ff;border:1px solid rgba(216,180,254,.32);border-radius:999px;padding:7px 10px;background:rgba(167,139,250,.1)}
+.ams-price-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.ams-price-fields label{display:grid;gap:8px;color:#d9d1e8;font-size:12px;font-weight:700}
+.ams-price-fields select,.ams-price-fields input{width:100%;min-height:46px;border:1px solid rgba(196,181,253,.25);border-radius:12px;padding:11px 12px;background:#100d1d;color:#fff;font:inherit;outline:none}.ams-price-fields select:focus,.ams-price-fields input:focus{border-color:#c4b5fd;box-shadow:0 0 0 3px rgba(167,139,250,.13)}
+.ams-price-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.ams-price-actions .btn{background:linear-gradient(135deg,#a78bfa,#e879f9);color:#170f27}.ams-price-actions .btn.light{background:rgba(255,255,255,.08);color:#f5f0ff;border:1px solid rgba(255,255,255,.16)}
+.ams-price-notice{margin:16px 0 0;color:#c4b5fd;font-size:12px;line-height:1.6}
+
+.ams-model-panel{max-width:980px;margin:18px auto 0;padding:24px;border:1px solid rgba(196,181,253,.2);border-radius:22px;background:linear-gradient(145deg,rgba(35,27,57,.94),rgba(18,15,31,.97));box-shadow:0 18px 55px rgba(0,0,0,.24)}
+.ams-model-intro{color:#aaa2bd;font-size:13px;line-height:1.6;margin:-8px 0 18px}
+.ams-model-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ams-model-fields label{display:grid;gap:8px;color:#d9d1e8;font-size:12px;font-weight:700}
+.ams-model-fields input,.ams-model-fields select{width:100%;min-height:46px;border:1px solid rgba(196,181,253,.25);border-radius:12px;padding:11px 12px;background:#100d1d;color:#fff;font:inherit;outline:none}
+.ams-model-fields input:focus,.ams-model-fields select:focus{border-color:#c4b5fd;box-shadow:0 0 0 3px rgba(167,139,250,.13)}
+.ams-model-list-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 10px}
+.ams-model-list-head h3{color:#fff;font-size:18px;margin:0}
+.ams-model-rows{display:grid;gap:10px}
+.ams-model-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:12px;padding:14px;border:1px solid rgba(196,181,253,.13);border-radius:14px;background:rgba(10,8,19,.42)}
+.ams-model-row strong{display:block;color:#f5f0ff;font-size:14px}.ams-model-row small{display:block;color:#aaa2bd;margin-top:4px}
+.ams-model-price{color:#e9d5ff;font-weight:850;white-space:nowrap}
+.ams-model-actions{display:flex;gap:6px}.ams-model-actions button{border:1px solid rgba(196,181,253,.25);background:#211936;color:#f5f0ff;border-radius:9px;padding:8px 10px;font-weight:700}
+.ams-model-empty{color:#aaa2bd;font-size:13px;padding:18px;border:1px dashed rgba(196,181,253,.25);border-radius:12px;text-align:center}
+@media(max-width:680px){.ams-model-panel{padding:18px;border-radius:17px}.ams-model-fields{grid-template-columns:1fr}.ams-model-row{grid-template-columns:1fr auto}.ams-model-actions{grid-column:1/-1}.ams-model-actions button{flex:1}}
+.ams-price-catalogue{margin-top:18px}.ams-price-rows{display:grid;gap:0}.ams-price-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;padding:14px 0;border-top:1px solid rgba(196,181,253,.13)}.ams-price-row span{color:#ded7ec;font-size:14px}.ams-price-row strong{color:#e9d5ff;font-size:15px;white-space:nowrap}
+@media(max-width:680px){.ams-price-panel,.ams-price-catalogue{padding:18px;border-radius:17px}.ams-price-fields{grid-template-columns:1fr}.ams-price-actions>*{width:100%;text-align:center}.ams-price-row{grid-template-columns:1fr auto}.ams-price-row span{font-size:13px}}
+</style>
+<script>
+(function(){
+ const defaults={
+  'Samsung':{'Display replacement':999,'Battery replacement':699,'Charging port repair':499,'Back panel replacement':699,'Speaker / microphone repair':399,'Camera repair':599},
+  'Apple iPhone':{'Display replacement':1499,'Battery replacement':999,'Charging port repair':799,'Back panel replacement':1299,'Speaker / microphone repair':599,'Camera repair':899},
+  'Vivo':{'Display replacement':999,'Battery replacement':699,'Charging port repair':499,'Back panel replacement':699,'Speaker / microphone repair':399,'Camera repair':599},
+  'Oppo':{'Display replacement':999,'Battery replacement':699,'Charging port repair':499,'Back panel replacement':699,'Speaker / microphone repair':399,'Camera repair':599},
+  'Realme':{'Display replacement':899,'Battery replacement':649,'Charging port repair':449,'Back panel replacement':649,'Speaker / microphone repair':349,'Camera repair':549},
+  'Redmi / Xiaomi':{'Display replacement':899,'Battery replacement':649,'Charging port repair':449,'Back panel replacement':649,'Speaker / microphone repair':349,'Camera repair':549},
+  'OnePlus':{'Display replacement':1499,'Battery replacement':999,'Charging port repair':799,'Back panel replacement':1199,'Speaker / microphone repair':599,'Camera repair':899},
+  'Motorola':{'Display replacement':999,'Battery replacement':699,'Charging port repair':499,'Back panel replacement':699,'Speaker / microphone repair':399,'Camera repair':599}
+ };
+ const clone=()=>JSON.parse(JSON.stringify(defaults)); let prices=clone(); let brand='Samsung';
+ const $=id=>document.getElementById(id); const fmt=n=>'₹'+Number(n).toLocaleString('en-IN')+' onwards';
+ function render(){const rows=$('amsPriceRows');if(!rows)return;$('amsCatalogueTitle').textContent=brand+' repair catalogue';rows.innerHTML='';Object.entries(prices[brand]).forEach(([service,amount])=>{const row=document.createElement('div');row.className='ams-price-row';const name=document.createElement('span');name.textContent=service;const price=document.createElement('strong');price.textContent=fmt(amount);row.append(name,price);rows.appendChild(row);});}
+ function init(){if(!$('amsPriceBrand'))return;const b=$('amsPriceBrand'),svc=$('amsPriceService'),amt=$('amsPriceAmount');b.addEventListener('change',()=>{brand=b.value;render();});$('amsApplyPrice').addEventListener('click',()=>{const n=Number(amt.value);if(amt.value.trim()===''||!Number.isFinite(n)||n<0||!Number.isInteger(n)){$('amsPriceNotice').textContent='Please enter a valid whole-number price of ₹0 or more.';return;}brand=b.value;prices[brand][svc.value]=n;render();const chosenModel=$('amsPriceModel')&&$('amsPriceModel').value;const modelLabel=chosenModel&&chosenModel!=='__other'?$('amsPriceModel').selectedOptions[0].textContent:(chosenModel==='__other'?'Other / model not listed':'all models');$('amsPriceNotice').textContent='Preview updated for '+brand+' · '+modelLabel+' — '+svc.value+': '+fmt(n)+'. This change is not live on the public website.';});$('amsResetPrices').addEventListener('click',()=>{prices=clone();brand=b.value;render();amt.value='';$('amsPriceNotice').textContent='Sample preview prices restored. No live website or database data was changed.';});render();}
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+
+
+<script id="ams-phone-model-manager">
+(function(){
+  const $ = id => document.getElementById(id);
+  const storageKey = "ams_midnight_phone_models_v1";
+  let models = [];
+  let editingId = null;
+  const starterCatalogue = {"Samsung": ["Galaxy A05", "Galaxy A06", "Galaxy A15 5G", "Galaxy A16 5G", "Galaxy A25 5G", "Galaxy A35 5G", "Galaxy A55 5G", "Galaxy S23", "Galaxy S24", "Galaxy S24 FE", "Galaxy S25", "Galaxy M15 5G", "Galaxy M35 5G"], "Apple": ["iPhone 11", "iPhone 12", "iPhone 13", "iPhone 14", "iPhone 15", "iPhone 16", "iPhone 16 Pro", "iPhone 17"], "Vivo": ["Y18", "Y28 5G", "Y200 5G", "T3 5G", "T3x 5G", "V30", "V40", "V50"], "Oppo": ["A3x 5G", "A3 Pro 5G", "A5 Pro 5G", "F25 Pro", "F27 Pro+", "Reno 11", "Reno 12", "Reno 13"], "Realme": ["Narzo N65 5G", "Narzo 70x 5G", "C55", "C65 5G", "P1 5G", "P3 5G", "12 Pro+ 5G", "13 Pro+ 5G"], "Redmi": ["A3", "13C 5G", "14C 5G", "Note 13 5G", "Note 14 5G", "Note 14 Pro+ 5G"], "Xiaomi": ["Xiaomi 14", "Xiaomi 14 Civi", "Xiaomi 15", "Xiaomi 15 Ultra"], "OnePlus": ["Nord CE 3 Lite", "Nord CE 4", "Nord CE 4 Lite", "Nord 4", "12R", "OnePlus 12", "OnePlus 13"], "Motorola": ["moto g34 5G", "moto g45 5G", "moto g85 5G", "Edge 50 Fusion", "Edge 50 Pro", "Edge 60 Fusion"], "Nothing": ["Phone (2a)", "Phone (2a) Plus", "Phone (3a)", "Phone (3a) Pro"], "iQOO": ["Z9 5G", "Z9x 5G", "Z10 5G", "Neo 9 Pro", "Neo 10R", "iQOO 13"], "Google Pixel": ["Pixel 7a", "Pixel 8a", "Pixel 8", "Pixel 9", "Pixel 9 Pro"]};
+  try {
+    models = JSON.parse(localStorage.getItem(storageKey) || "[]");
+    if (!Array.isArray(models)) models = [];
+  } catch(e) { models = []; }
+  // Seed a model-name catalogue only on first use; these are NOT claimed as shop stock or prices.
+  if (models.length === 0) {
+    Object.entries(starterCatalogue).forEach(([brand, names]) => {
+      names.forEach((name, index) => models.push({
+        id: "catalogue-" + brand.toLowerCase().replace(/[^a-z0-9]/g,"") + "-" + index,
+        brand, name, condition: "Model catalogue", price: null, stock: null, catalogueOnly: true
+      }));
+    });
+    try { localStorage.setItem(storageKey, JSON.stringify(models)); } catch(e) {}
+  }
+  const save = () => {
+    try { localStorage.setItem(storageKey, JSON.stringify(models)); } catch(e) {}
+    window.dispatchEvent(new CustomEvent("ams:phone-models-updated"));
+  };
+  const money = n => "₹" + Number(n).toLocaleString("en-IN");
+  function clearForm(){
+    ["amsModelName","amsModelPrice"].forEach(id => { if($(id)) $(id).value = ""; });
+    if($("amsModelStock")) $("amsModelStock").value = "1";
+    if($("amsModelBrand")) $("amsModelBrand").selectedIndex = 0;
+    if($("amsModelCondition")) $("amsModelCondition").value = "New";
+    editingId = null;
+    if($("amsAddModel")) $("amsAddModel").textContent = "Add phone model";
+  }
+  function render(){
+    const host = $("amsModelRows");
+    if(!host) return;
+    host.innerHTML = "";
+    $("amsModelCount").textContent = models.length + (models.length === 1 ? " MODEL" : " MODELS");
+    if(!models.length){
+      const empty = document.createElement("p"); empty.className = "ams-model-empty";
+      empty.textContent = "No phone models added yet. Add your first model above."; host.appendChild(empty); return;
+    }
+    models.forEach(model => {
+      const row = document.createElement("div"); row.className = "ams-model-row";
+      const info = document.createElement("div");
+      const name = document.createElement("strong"); name.textContent = model.brand + " " + model.name;
+      const meta = document.createElement("small"); meta.textContent = model.catalogueOnly ? "Starter catalogue · Set your shop price and stock" : model.condition + " · Stock: " + model.stock;
+      info.append(name,meta);
+      const price = document.createElement("div"); price.className = "ams-model-price"; price.textContent = model.catalogueOnly ? "NOT PRICED" : money(model.price);
+      const actions = document.createElement("div"); actions.className = "ams-model-actions";
+      const edit = document.createElement("button"); edit.type = "button"; edit.textContent = "Edit";
+      edit.addEventListener("click", () => {
+        $("amsModelBrand").value = model.brand; $("amsModelName").value = model.name;
+        $("amsModelCondition").value = model.catalogueOnly ? "New" : model.condition; $("amsModelPrice").value = model.catalogueOnly ? "" : model.price;
+        $("amsModelStock").value = model.catalogueOnly ? "0" : model.stock; editingId = model.id;
+        $("amsAddModel").textContent = "Save model changes";
+        $("amsModelNotice").textContent = "Editing " + model.brand + " " + model.name + ".";
+        $("amsModelName").focus();
+      });
+      const remove = document.createElement("button"); remove.type = "button"; remove.textContent = "Delete";
+      remove.addEventListener("click", () => {
+        models = models.filter(item => item.id !== model.id); save(); render();
+        $("amsModelNotice").textContent = "Model removed from this browser preview.";
+        if(editingId === model.id) clearForm();
+      });
+      actions.append(edit,remove); row.append(info,price,actions); host.appendChild(row);
+    });
+  }
+  function init(){
+    if(!$("amsAddModel")) return;
+    $("amsAddModel").addEventListener("click", () => {
+      const brand = $("amsModelBrand").value;
+      const name = $("amsModelName").value.trim();
+      const condition = $("amsModelCondition").value;
+      const priceRaw = $("amsModelPrice").value;
+      const stockRaw = $("amsModelStock").value;
+      const price = Number(priceRaw), stock = Number(stockRaw);
+      if(!name){ $("amsModelNotice").textContent = "Please enter the phone model name."; return; }
+      if(priceRaw.trim() === "" || !Number.isInteger(price) || price < 0){ $("amsModelNotice").textContent = "Enter a valid whole-number selling price."; return; }
+      if(stockRaw.trim() === "" || !Number.isInteger(stock) || stock < 0){ $("amsModelNotice").textContent = "Enter a valid stock quantity."; return; }
+      const item = {id: editingId || (Date.now().toString(36) + Math.random().toString(36).slice(2,7)),brand,name,condition,price,stock,catalogueOnly:false};
+      if(editingId){ models = models.map(existing => existing.id === editingId ? item : existing); }
+      else { models.push(item); }
+      save(); render(); clearForm();
+      $("amsModelNotice").textContent = "Phone model saved in this browser preview. Add or confirm the actual shop price and stock before selling; this is not yet published live.";
+    });
+    $("amsClearModelForm").addEventListener("click", clearForm);
+    render();
+  }
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded",init); else init();
+})();
+</script>
+
+<script id="ams-v26-phone-visibility-guard">
+(function(){
+ function guard(){
+  const phone=document.getElementById('ams-world-phone');
+  if(!phone) return;
+  phone.style.setProperty('display','block','important');
+  phone.style.setProperty('visibility','visible','important');
+  phone.style.setProperty('opacity','1','important');
+ }
+ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',guard); else guard();
+ window.addEventListener('load',guard);
+})();
+</script>
+
+<script id="ams-v35-live-shared-phone-model-dropdowns">
+(function(){
+  const storageKey = "ams_midnight_phone_models_v1";
+  const $ = id => document.getElementById(id);
+  const dropdowns = [
+    {brandId:"brand", modelId:"estimateModel"},
+    {brandId:"amsPriceBrand", modelId:"amsPriceModel"}
+  ];
+  function readModels(){
+    try{
+      const data = JSON.parse(localStorage.getItem(storageKey) || "[]");
+      return Array.isArray(data) ? data.filter(item => item && item.name && item.brand) : [];
+    }catch(error){ return []; }
+  }
+  function canonical(value){
+    const v = String(value || "").toLowerCase().replace(/[^a-z0-9]/g,"");
+    if(["apple","appleiphone","iphone"].includes(v)) return "apple";
+    if(["redmi","xiaomi","redmixiaomi"].includes(v)) return "xiaomi-redmi";
+    return v;
+  }
+  function refresh(brandId, modelId, keepSelection){
+    const brand = $(brandId), select = $(modelId);
+    if(!brand || !select) return;
+    const previous = keepSelection ? select.value : "";
+    const selectedBrand = canonical(brand.value);
+    const available = readModels().filter(item => canonical(item.brand) === selectedBrand);
+    select.innerHTML = "";
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = available.length ? "Select phone model" : "No models added for this brand yet";
+    select.appendChild(placeholder);
+    available.forEach(item => {
+      const option = document.createElement("option");
+      option.value = String(item.id);
+      option.textContent = item.name + (item.condition ? " · " + item.condition : "");
+      option.dataset.price = item.price == null ? "" : String(item.price);
+      option.dataset.stock = item.stock == null ? "" : String(item.stock);
+      select.appendChild(option);
+    });
+    const other = document.createElement("option");
+    other.value = "__other";
+    other.textContent = "Other / model not listed";
+    select.appendChild(other);
+    if(previous && Array.from(select.options).some(option => option.value === previous)){
+      select.value = previous;
+    }
+  }
+  function refreshAll(keepSelection){
+    dropdowns.forEach(item => refresh(item.brandId,item.modelId,keepSelection));
+  }
+  function init(){
+    dropdowns.forEach(({brandId,modelId}) => {
+      const brand = $(brandId);
+      if(brand) brand.addEventListener("change", () => refresh(brandId,modelId,false));
+    });
+    // Same-page inventory edits do not fire the browser "storage" event.
+    window.addEventListener("ams:phone-models-updated", () => refreshAll(true));
+    // Cross-tab changes and returning to the page also refresh the lists.
+    window.addEventListener("storage", event => {
+      if(event.key === storageKey) refreshAll(true);
+    });
+    window.addEventListener("pageshow", () => refreshAll(true));
+    refreshAll(false);
+    window.AMSRefreshPhoneModelDropdowns = () => refreshAll(true);
+  }
+  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded",init);
+  else init();
+})();
+</script>
+
+
+<script id="ams-v34-guided-quote-wizard-logic">
+(function(){
+  const $ = id => document.getElementById(id);
+  function init(){
+    const wizard = $("amsQuoteWizard");
+    if(!wizard) return;
+    const steps = Array.from(wizard.querySelectorAll("[data-quote-step]"));
+    const names = ["Your phone brand","Phone model","Repair needed","Issue details","Your estimate"];
+    let current = 0;
+    const brand = $("brand"), model = $("estimateModel"), repair = $("repair");
+    const otherWrap = $("amsOtherModelWrap"), otherInput = $("amsOtherModel");
+    const back = $("amsQuoteBack"), next = $("amsQuoteNext");
+    const validation = $("amsQuoteValidation");
+    function selectedModel(){
+      if(model.value === "__other") return otherInput.value.trim() || "Other / model not specified";
+      return model.selectedOptions[0] && model.value ? model.selectedOptions[0].textContent : "";
+    }
+    function refreshEstimate(){
+      const price = Number(repair.value || 0);
+      $("estimatePrice").textContent = "₹" + price.toLocaleString("en-IN") + " onwards";
+      const summary = $("amsQuoteSummary");
+      const rows = [
+        ["Brand",brand.value],
+        ["Phone model",selectedModel() || "Not selected"],
+        ["Repair",repair.selectedOptions[0] ? repair.selectedOptions[0].textContent : "Not selected"],
+        ["Issue details",$("amsIssueDetails").value.trim() || "Not provided"]
+      ];
+      summary.innerHTML = "";
+      rows.forEach(([label,value]) => {
+        const row = document.createElement("div");
+        const left = document.createElement("span"); left.textContent = label;
+        const right = document.createElement("strong"); right.textContent = value;
+        row.append(left,right); summary.appendChild(row);
+      });
+      const message = [
+        "Hello All Mobile Service & Technology, I would like a confirmed repair quotation.",
+        "Brand: " + brand.value,
+        "Phone model: " + (selectedModel() || "Not selected"),
+        "Repair needed: " + (repair.selectedOptions[0] ? repair.selectedOptions[0].textContent : "Not selected"),
+        "Indicative starting price: ₹" + price.toLocaleString("en-IN") + " onwards",
+        "Issue details: " + ($("amsIssueDetails").value.trim() || "Not provided"),
+        "Please confirm the final price after checking the device."
+      ].join("\n");
+      $("amsQuoteWhatsApp").href = "https://wa.me/917997783006?text=" + encodeURIComponent(message);
+    }
+    function showStep(index){
+      current = Math.max(0,Math.min(steps.length-1,index));
+      steps.forEach((step,i)=>step.classList.toggle("is-active",i===current));
+      $("amsQuoteStepLabel").textContent = "STEP " + (current+1) + " OF " + steps.length;
+      $("amsQuoteStepName").textContent = names[current];
+      $("amsQuoteProgressBar").style.width = ((current+1)/steps.length*100) + "%";
+      back.disabled = current===0;
+      next.textContent = current===steps.length-1 ? "Start again" : "Continue";
+      validation.textContent = "";
+      if(current===4) refreshEstimate();
+      const top = wizard.getBoundingClientRect().top + window.scrollY - 105;
+      window.scrollTo({top,behavior:"smooth"});
+    }
+    function validate(){
+      if(current===0 && !brand.value){validation.textContent="Please select your phone brand.";return false;}
+      if(current===1){
+        if(!model.value){validation.textContent="Please select your phone model, or choose Other.";return false;}
+        if(model.value==="__other" && !otherInput.value.trim()){validation.textContent="Please enter your phone model.";return false;}
+      }
+      if(current===2 && !repair.value){validation.textContent="Please select the repair you need.";return false;}
+      return true;
+    }
+    model.addEventListener("change",()=>{otherWrap.hidden=model.value!=="__other";});
+    repair.addEventListener("change",refreshEstimate);
+    brand.addEventListener("change",()=>{model.value="";otherWrap.hidden=true;});
+    back.addEventListener("click",()=>showStep(current-1));
+    next.addEventListener("click",()=>{
+      if(current===steps.length-1){
+        brand.selectedIndex=0; model.value=""; repair.selectedIndex=0; otherInput.value=""; otherWrap.hidden=true; $("amsIssueDetails").value="";
+        showStep(0); return;
+      }
+      if(!validate()) return;
+      showStep(current+1);
+    });
+    $("amsQuoteWhatsApp").addEventListener("click",refreshEstimate);
+    showStep(0);
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",init);
+  else init();
+})();
+</script>
+
+
+<style id="ams-v36-menu-hard-fix">
+@media (max-width:760px) {
+  header { position:sticky !important; top:0 !important; z-index:100000 !important; }
+  header .nav { position:relative !important; }
+  header #menuToggle { position:relative !important; z-index:100003 !important; pointer-events:auto !important; touch-action:manipulation !important; }
+  header #mainNav { z-index:100002 !important; pointer-events:auto !important; }
+  header #mainNav.ams-force-open { display:flex !important; visibility:visible !important; opacity:1 !important; }
+}
+</style>
+<script id="ams-v36-menu-hard-fix-script">
+(function(){
+  function init(){
+    var header=document.querySelector('header');
+    if(!header || header.dataset.amsV36Menu==='1') return;
+    var btn=header.querySelector('#menuToggle');
+    var nav=header.querySelector('#mainNav');
+    if(!btn || !nav) return;
+    header.dataset.amsV36Menu='1';
+    function setMenu(open){
+      nav.classList.toggle('open',open);
+      nav.classList.toggle('ams-force-open',open && window.innerWidth<=760);
+      nav.style.display = open && window.innerWidth<=760 ? 'flex' : '';
+      nav.style.visibility = open && window.innerWidth<=760 ? 'visible' : '';
+      nav.style.opacity = open && window.innerWidth<=760 ? '1' : '';
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      btn.textContent=open?'✕ Close':'☰ Menu';
+    }
+    btn.addEventListener('click',function(e){
+      e.preventDefault(); e.stopPropagation();
+      setMenu(btn.getAttribute('aria-expanded')!=='true');
+    },true);
+    nav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){setMenu(false);});
+    });
+    document.addEventListener('click',function(e){
+      if(!header.contains(e.target)) setMenu(false);
+    });
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false);});
+    window.addEventListener('resize',function(){
+      if(window.innerWidth>760) setMenu(false);
+      else if(btn.getAttribute('aria-expanded')==='true') setMenu(true);
+    });
+    setMenu(false);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+  else init();
+})();
+</script>
+
+
+<script id="ams-v37-same-site-navigation">
+(function(){
+  document.querySelectorAll('header #mainNav a[href]').forEach(function(link){
+    var href=link.getAttribute('href')||'';
+    if(href.indexOf('all-mobile-service-technology-com.pages.dev')!==-1){
+      var hash=href.indexOf('#')!==-1?href.slice(href.indexOf('#')):'#';
+      link.setAttribute('href',hash);
+    }
+  });
+})();
+</script>
+
+</body></html>
