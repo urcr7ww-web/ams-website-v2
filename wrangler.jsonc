@@ -12,8 +12,8 @@
     {
       "binding": "DB",
       "database_name": "mobile-service-db",
-      "database_id": "REPLACE_WITH_YOUR_D1_DATABASE_ID"
-    }
+      "database_id": "   "a2ee2dfc-4bf8-4c07-a62d-41e6d94271f6 "
+    } 
   ],
   "vars": {
     "ENVIRONMENT": "production"
